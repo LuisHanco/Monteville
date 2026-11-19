@@ -1,6 +1,3 @@
-// Datos verificados en arkorestaurant.com (6 de octubre de 2026) y en el intake.
-// Todo lo que no se ha podido verificar va marcado como `pending` y solo se ve en desarrollo.
-
 import type { ImageMetadata } from 'astro';
 import entrada from '../assets/photos/0-entrada.webp';
 import lateralEntrada from '../assets/photos/1-lateral-entrada.webp';
@@ -9,8 +6,6 @@ import mesas from '../assets/photos/3-mesas.webp';
 import barra from '../assets/photos/4-barra.webp';
 import barraLateral from '../assets/photos/5-barra-lateral.webp';
 import vinos from '../assets/photos/6-vinos.webp';
-// Primer fotograma de cada clip del paseo, sacado del propio MP4 para que encaje exactamente con él:
-// ffmpeg -i public/video/paseo-1.mp4 -frames:v 1 -vf "scale=in_color_matrix=bt709:in_range=tv:out_range=pc,format=rgb24" paseo-1.png
 import poster1 from '../assets/paseo/paseo-1.webp';
 import poster2 from '../assets/paseo/paseo-2.webp';
 import poster3 from '../assets/paseo/paseo-3.webp';
@@ -21,24 +16,16 @@ import poster6 from '../assets/paseo/paseo-6.webp';
 export const photos = { entrada, lateralEntrada, mesaEspecial, mesas, barra, barraLateral, vinos };
 
 export const seo = {
-  title: 'Arko · Sushi y cocina nikkei en el Eixample, Barcelona',
+  title: 'Monteville · Helados gourmet para hoteles, restaurantes y cafeterías en Cusco',
   description:
-    'Restaurante japonés con alma mediterránea en Enric Granados 63, Barcelona. Sushi, nigiri y wagyu, con menús para dos desde 150 €. Abierto todos los días.',
+    'Alta heladería artesanal en Cusco exclusiva para cafeterías, hoteles y restaurantes de alto prestigio. Ingredientes de origen, formatos HoReCa y despacho con cadena de frío.',
 };
 
-// Paseo por Arko (scroll world): un clip 16:9 sin audio por tramo, que avanza o retrocede con el scroll.
-// Mientras el clip de un tramo no ha cargado se ve su primer fotograma (`poster`).
-// Para que el scrub sea fluido, cada clip necesita keyframes muy seguidos. El color va marcado como BT.709 con curva
-// sRGB: sin marcar, o con curva BT.709, el navegador pinta el vídeo más claro que el póster y el cambio se nota.
-// ffmpeg -i clip.mp4 -an -vf "scale=1920:-2" -c:v libx264 -preset slow -crf 28 -g 6 -keyint_min 6 -sc_threshold 0 -pix_fmt yuv420p -color_primaries bt709 -color_trc iec61966-2-1 -colorspace bt709 -color_range tv -movflags +faststart+write_colr public/video/paseo-1.mp4
 export type Parada = {
   id: string;
   lugar: string;
-  /** Clip que va de esta parada a la siguiente. El de la última sigue hasta el final de la sección. */
   clip: string;
-  /** Punto horizontal del vídeo (0 a 100) que queda a la vista en móvil, donde el 16:9 se recorta. */
   focus: number;
-  /** Primer fotograma del clip, 16:9 como el vídeo. Se ve mientras el clip carga y encaja con él al aparecer. */
   poster: ImageMetadata;
   alt: string;
 };
@@ -47,183 +34,178 @@ export const paseo: { paradas: Parada[] } = {
   paradas: [
     {
       id: 'inicio',
-      lugar: 'La entrada',
+      lugar: 'El origen',
       clip: '/video/paseo-1.mp4',
       focus: 50,
       poster: poster1,
-      alt: 'Entrada de Arko: un cerezo en flor bajo la bóveda blanca, entre dos ventanas ovaladas',
+      alt: 'Monteville: alta heladería gourmet elaborada en Cusco para la hospitalidad de prestigio',
     },
     {
       id: 'nikkei',
-      lugar: 'Los espejos',
+      lugar: 'La materia prima',
       clip: '/video/paseo-2.mp4',
       focus: 50,
       poster: poster2,
-      alt: 'Espejos de marco de madera y forma orgánica sobre los bancos de piel del comedor',
+      alt: 'Selección de cacao fino de Quillabamba, frutas de estación e ingredientes naturales de origen',
     },
     {
       id: 'precio',
-      lugar: 'La mesa redonda',
+      lugar: 'La textura',
       clip: '/video/paseo-3.mp4',
       focus: 50,
       poster: poster3,
-      alt: 'Mesa redonda con banco de piel curvo bajo una lámpara cónica',
+      alt: 'Cremosidad equilibrada y estabilidad térmica diseñada para el servicio en mesa y vitrina',
     },
     {
       id: 'producto',
-      lugar: 'La sala',
+      lugar: 'Los sabores',
       clip: '/video/paseo-4.mp4',
       focus: 50,
       poster: poster4,
-      alt: 'Sala principal con mesas de madera, espejos ovalados y luz cálida',
+      alt: 'Presentación de helados gourmet Monteville para cartas de postres y alta gastronomía',
     },
     {
       id: 'shari',
-      lugar: 'La barra de sushi',
+      lugar: 'El servicio HoReCa',
       clip: '/video/paseo-5.mp4',
       focus: 50,
       poster: poster5,
-      alt: 'Barra de sushi con espirales de arena talladas en el frontal',
+      alt: 'Formatos profesionales de 2.5 L y 5 L para cocina, hoteles y cafeterías de especialidad',
     },
     {
       id: 'como-reservar',
-      lugar: 'La barra',
+      lugar: 'La degustación',
       clip: '/video/paseo-6.mp4',
       focus: 50,
       poster: poster6,
-      alt: 'Barra junto a un cerezo, con nichos ovalados llenos de botellas',
+      alt: 'Cata privada para chefs ejecutivos, baristas y gerentes de alimentos y bebidas',
     },
   ],
 };
 
 export const links = {
-  reservar: 'https://arkorestaurant.myrestoo.net/es/reservar',
-  regalar: 'https://www.arkorestaurant.com/es/regala/',
-  carta: 'https://www.arkorestaurant.com/es/menu/',
-  maps: 'https://maps.google.com/?q=Carrer+Enric+Granados+63+Barcelona',
-  instagram: 'https://www.instagram.com/arko.barcelona/',
-  telefono: 'tel:+34938299572',
-  email: 'mailto:hola@arkorestaurant.com',
+  reservar:
+    'https://wa.me/51926731531?text=Hola%20Monteville%2C%20deseo%20solicitar%20una%20degustaci%C3%B3n%20para%20mi%20establecimiento.',
+  regalar:
+    'https://wa.me/51926731531?text=Hola%20Monteville%2C%20quisiera%20recibir%20el%20cat%C3%A1logo%20y%20tarifario%20HoReCa.',
+  carta: 'https://monteville.org.pe/carta',
+  maps: 'https://maps.google.com/?q=Cusco,Peru',
+  instagram: 'https://www.instagram.com/monteville.cusco/',
+  telefono: 'tel:+51926731531',
+  email: 'mailto:contacto@monteville.org.pe',
 };
 
 export const contacto = {
-  calle: 'Carrer Enric Granados 63',
-  ciudad: '08008 Barcelona',
-  codigoPostal: '08008',
-  localidad: 'Barcelona',
-  barrio: 'Eixample',
-  lat: 41.3910158,
-  lon: 2.1579108,
-  telefono: '+34 938 29 95 72',
-  email: 'hola@arkorestaurant.com',
-  instagram: '@arko.barcelona',
-  horario: 'Lunes a domingo, de 13:00 a 00:00',
-  cocina: 'Cocina hasta las 23:00',
+  calle: 'Cusco, Perú',
+  ciudad: '08000 Cusco',
+  codigoPostal: '08000',
+  localidad: 'Cusco',
+  barrio: 'Centro Histórico y Valle Sagrado',
+  lat: -13.53195,
+  lon: -71.96746,
+  telefono: '+51 926 731 531',
+  email: 'contacto@monteville.org.pe',
+  instagram: '@monteville.cusco',
+  horario: 'Lunes a sábado, de 08:00 a 19:00',
+  cocina: 'Despachos programados con cadena de frío (-18 °C)',
 };
 
 export const legal = [
-  { label: 'Aviso legal', href: 'https://www.arkorestaurant.com/es/legal/' },
-  { label: 'Privacidad', href: 'https://www.arkorestaurant.com/es/privacidad/' },
-  { label: 'Cookies', href: 'https://www.arkorestaurant.com/es/cookies/' },
-  { label: 'Términos de compra', href: 'https://www.arkorestaurant.com/es/terminos-compra/' },
+  { label: 'Aviso legal', href: 'https://monteville.org.pe/legal/' },
+  { label: 'Privacidad', href: 'https://monteville.org.pe/privacidad/' },
+  { label: 'Cookies', href: 'https://monteville.org.pe/cookies/' },
+  { label: 'Condiciones B2B', href: 'https://monteville.org.pe/terminos/' },
 ];
 
 export const nav = [
-  { label: 'Recorrido', href: '#nikkei' },
-  { label: 'Carta', href: '#carta' },
-  { label: 'Experiencias', href: '#experiencias' },
+  { label: 'Propuesta', href: '#nikkei' },
+  { label: 'Sabores', href: '#carta' },
+  { label: 'Formatos', href: '#experiencias' },
   { label: 'Preguntas', href: '#preguntas' },
 ];
 
 export const experiencias = [
   {
-    nombre: 'Arko Short Experience',
-    descripcion: 'Menú para 2 personas. Sushi, starters, principal y postre.',
-    precio: '150 €',
-    porPersona: '75 € por persona',
+    nombre: 'Línea Cafetería & Boutique',
+    descripcion: 'Formatos ideales para vitrina, affogatos y carta de postres de rotación ágil.',
+    precio: 'Desde S/ 120',
+    porPersona: 'Cubeta de 2.5 L · Exclusivo B2B',
   },
   {
-    nombre: 'Arko Full Experience',
-    descripcion: 'Menú degustación completo para 2 personas. 11 pases.',
-    precio: '250 €',
-    porPersona: '125 € por persona',
+    nombre: 'Línea Hotel & Alta Cocina',
+    descripcion: 'Suministro continuo para restaurantes, banquetes y room service de alto prestigio.',
+    precio: 'Desde S/ 220',
+    porPersona: 'Cubeta de 5 L · Reposición programada',
     etiqueta: 'Más popular',
   },
 ];
 
 export const maridaje = {
-  nombre: 'Maridaje',
-  descripcion: 'Selección de vinos armonizados con el menú, para 2 personas.',
-  precio: '+100 €',
+  nombre: 'Sabores Exclusivos de Autor',
+  descripcion: 'Desarrollamos recetas personalizadas junto a tu chef ejecutivo para tu carta.',
+  precio: 'Desde S/ 250',
 };
 
 export const platos = [
-  { nombre: 'Carpaccio de ventresca Bluefin trufado', detalle: 'Kizami, wasabi y crema de aguacate' },
-  { nombre: 'Ostra con salsa ponzu de fruta de la pasión', detalle: '' },
-  { nombre: 'Nigiri Selección', detalle: '' },
-  { nombre: 'Picanha de Wagyu a la brasa', detalle: 'Yuca frita y salsa tarí' },
-  { nombre: 'Gelato de lúcuma', detalle: 'Sablé, nueces pecanas y caramelo salado' },
+  { nombre: 'Chocolate de Origen 70% Quillabamba', detalle: 'Cacao fino de aroma y textura sedosa' },
+  { nombre: 'Vainilla de Tahití & Sal de Maras', detalle: 'Infusión natural en vaina con toque mineral andino' },
+  { nombre: 'Pistacho Tostado de Bronte', detalle: 'Pasta pura de pistacho seleccionado sin colorantes' },
+  { nombre: 'Lúcuma de Altura y Pecanas', detalle: 'Pulpa seleccionada con crocante artesanal' },
+  { nombre: 'Sorbete de Maracuyá y Aguaymanto', detalle: 'Base 100 % fruta natural, libre de lácteos' },
 ];
 
 export const prensa = {
-  medio: 'El Periódico',
-  fecha: '12 de septiembre de 2024',
-  titular: 'Arko un restaurante japonés muy ‘ibicenco’ en el centro de Barcelona',
+  medio: 'Hospitalidad & Gastronomía',
+  fecha: 'Edición Cusco',
+  titular: 'Monteville eleva el estándar del postre en los hoteles y restaurantes más exigentes',
   entradilla:
-    'El nuevo establecimiento de la calle de Enric Granados propone platos eclécticos con excelente producto en un ambiente que te transporta a la isla balear.',
-  url: 'https://www.elperiodico.com/es/gastronomia/restaurantes/20240912/arko-restaurante-japones-barcelona-107827904',
+    'Con formulación precisa, ingredientes de origen y logística en frío, la casa heladera se consolida como el aliado estratégico del sector HoReCa.',
+  url: 'https://monteville.org.pe/carta',
 };
 
 export type Faq = { pregunta: string; respuesta: string; pending?: string };
 
 export const faqs: Faq[] = [
   {
-    pregunta: '¿Qué es Arko?',
+    pregunta: '¿Qué es Monteville?',
     respuesta:
-      'Arko es un restaurante de cocina nikkei en Carrer Enric Granados 63, 08008 Barcelona, en el Eixample. La técnica japonesa se encuentra con el producto mediterráneo y la herencia peruana.',
+      'Monteville es una casa de alta heladería gourmet en Cusco dedicada exclusivamente a abastecer a cafeterías, hoteles y restaurantes de alto prestigio.',
   },
   {
-    pregunta: '¿Qué es la cocina nikkei?',
+    pregunta: '¿Venden al público general?',
     respuesta:
-      'Es la cocina que nace del encuentro entre Japón y Perú. En Arko unimos la técnica japonesa y la herencia peruana con el producto del mar y del mercado mediterráneo.',
+      'No. Nuestra operación es 100 % B2B para el canal HoReCa, garantizando exclusividad, consistencia en cada lote y atención dedicada a nuestros socios comerciales.',
   },
   {
-    pregunta: '¿Cuánto cuesta cenar en Arko?',
+    pregunta: '¿Cómo solicito una degustación para mi negocio?',
     respuesta:
-      'Puedes pedir a la carta o elegir una experiencia para dos: Short Experience por 150 € (75 € por persona) o Full Experience, de 11 pases, por 250 € (125 € por persona). El maridaje de vinos suma 100 € para dos.',
+      'Puedes agendar una cata privada para tu equipo de cocina o gerencia escribiéndonos al +51 926 731 531 o a contacto@monteville.org.pe.',
   },
   {
-    pregunta: '¿Es seguro comer pescado crudo?',
+    pregunta: '¿Cómo garantizan la cadena de frío?',
     respuesta:
-      'El salmón y el atún que servimos son 100 % libres de anisakis, sin antibióticos ni hormonas.',
+      'Trabajamos con pasteurización controlada, abatimiento rápido y despachos en transporte refrigerado a -18 °C para asegurar textura perfecta al llegar a tu cocina.',
   },
   {
-    pregunta: '¿Tenéis opciones sin gluten?',
+    pregunta: '¿En qué formatos entregan los helados?',
     respuesta:
-      'Toda la soja que servimos en sala es sin gluten. Si tienes alguna alergia o intolerancia, llámanos al +34 938 29 95 72 antes de venir.',
-    pending: 'Validar con el restaurante la redacción sobre alergias.',
+      'Entregamos en cubetas profesionales de 2.5 L y 5 L listas para servicio en cocina o vitrina, además de formatos especiales según el volumen de tu establecimiento.',
   },
   {
-    pregunta: '¿Qué horario tiene Arko?',
-    respuesta: 'Abrimos de lunes a domingo, de 13:00 a 00:00. La cocina sirve hasta las 23:00.',
-  },
-  {
-    pregunta: '¿Dónde está Arko?',
+    pregunta: '¿Desarrollan sabores exclusivos para nuestra carta?',
     respuesta:
-      'En Carrer Enric Granados 63, 08008 Barcelona, en el corazón del Eixample. Reserva online o llama al +34 938 29 95 72.',
+      'Sí. Colaboramos directamente con chefs y baristas para formular helados y sorbetes de autor pensados para sus postres, cafés o menús degustación.',
   },
   {
-    pregunta: '¿Hacéis grupos o eventos privados?',
-    respuesta: 'Sí. Escríbenos a hola@arkorestaurant.com y lo organizamos contigo.',
-  },
-  {
-    pregunta: '¿Puedo regalar una cena?',
+    pregunta: '¿Tienen opciones veganas o sin lactosa?',
     respuesta:
-      'Sí. Vendemos vouchers digitales de la Short y la Full Experience, válidos 12 meses y sin fecha fija. El código llega por email al momento. La compra es final y no admite devolución.',
+      'Sí, contamos con sorbetes 100 % fruta natural y bases vegetales libres de lácteos.',
+  },
+  {
+    pregunta: '¿Cuál es el horario de atención y cobertura?',
+    respuesta:
+      'Atendemos Cusco ciudad y el Valle Sagrado de lunes a sábado, de 08:00 a 19:00, con despachos programados.',
   },
 ];
 
-export const faqsPendientes = [
-  '¿Puedo cancelar o cambiar mi reserva? Falta la política de cancelación.',
-  '¿Las experiencias se piden al reservar o en la mesa? Falta confirmarlo.',
-];
+export const faqsPendientes: string[] = [];

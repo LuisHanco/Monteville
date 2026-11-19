@@ -3,46 +3,45 @@
 
 export const ogImage = {
   src: '/og-image.jpg',
-  title: 'Arko · Cocina japonesa con alma mediterránea',
-  alt: 'Arko: cocina japonesa con alma mediterránea, junto a la entrada del restaurante',
+  title: 'Monteville · Helados gourmet para hoteles, restaurantes y cafeterías en Cusco',
+  alt: 'Monteville: alta heladería gourmet artesanal en Cusco para el canal HoReCa',
 };
 
-// Las mismas fotos del local en JPG con URL fija en public/photos: el sitemap de imágenes y el JSON-LD necesitan
-// direcciones estables, no las que genera astro:assets en cada build.
+// Fotos en JPG con URL fija en public/photos para el sitemap de imágenes y el JSON-LD.
 export const fotosPublicas = [
   {
     src: '/photos/0-entrada.jpg',
-    lugar: 'La entrada',
-    alt: 'La entrada de Arko: un cerezo en flor sobre la puerta de cristal, ventanas ovaladas y mesas de nogal',
+    lugar: 'El origen',
+    alt: 'Monteville: alta heladería gourmet elaborada en Cusco para la hospitalidad de prestigio',
   },
   {
     src: '/photos/1-lateral-entrada.jpg',
-    lugar: 'Los espejos',
-    alt: 'Pared de espejos de borde orgánico junto a una ventana ovalada, con sillas tapizadas y alfombra índigo y naranja',
+    lugar: 'La materia prima',
+    alt: 'Selección de cacao fino de Quillabamba, frutas de estación e ingredientes naturales',
   },
   {
     src: '/photos/2-mesa-especial.jpg',
-    lugar: 'La mesa redonda',
-    alt: 'Reservado redondo de cuero bajo una lámpara colgante, con plantas y un bonsái en una tinaja blanca',
+    lugar: 'La textura',
+    alt: 'Helado gourmet Monteville con cremosidad equilibrada y estabilidad térmica para servicio en mesa',
   },
   {
     src: '/photos/3-mesas.jpg',
-    lugar: 'La sala',
-    alt: 'Comedor largo con mesas de nogal, espejos ovalados en la pared y arcos de yeso',
+    lugar: 'Los sabores',
+    alt: 'Carta de helados y sorbetes artesanales diseñada para hoteles y restaurantes de alto prestigio',
   },
   {
     src: '/photos/4-barra.jpg',
-    lugar: 'La barra de sushi',
-    alt: 'La barra con espirales de arena talladas, una ola de yeso iluminada encima y ramas de cerezo en el techo',
+    lugar: 'El servicio HoReCa',
+    alt: 'Formatos profesionales de 2.5 L y 5 L para cocina, vitrina y cafeterías de especialidad',
   },
   {
     src: '/photos/5-barra-lateral.jpg',
-    lugar: 'La barra',
-    alt: 'El reservado de mimbre junto a un cerezo rosa y la barra de espirales, bajo un techo con el dibujo de la alfombra',
+    lugar: 'Cadena de frío',
+    alt: 'Control térmico y despachos programados en Cusco y el Valle Sagrado',
   },
   {
     src: '/photos/6-vinos.jpg',
-    lugar: 'Los vinos',
-    alt: 'El pasillo de las vitrinas de vino de Arko, con una puerta de espejo al fondo',
+    lugar: 'La degustación',
+    alt: 'Cata privada para chefs ejecutivos, baristas y gerentes de alimentos y bebidas',
   },
 ];

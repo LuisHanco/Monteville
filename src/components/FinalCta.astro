@@ -10,7 +10,7 @@ import { contacto, links, photos } from '../data/arko';
     <div data-reveal class="w-48 lg:w-56">
       <Picture
         src={photos.entrada}
-        alt="La puerta de Arko vista desde dentro, bajo un cerezo en flor"
+        alt="Monteville, alta heladería gourmet para cafeterías, hoteles y restaurantes en Cusco"
         formats={['avif', 'webp']}
         widths={[320, 480]}
         sizes="224px"
@@ -21,13 +21,15 @@ import { contacto, links, photos } from '../data/arko';
       />
     </div>
     <h2 id="final-title" data-reveal style="--d:100ms" class="mt-12 text-4xl lg:text-6xl">
-      Te esperamos en<br /> Enric Granados 63
+      Eleva la carta de<br /> tu establecimiento
     </h2>
     <p data-reveal style="--d:200ms" class="mt-6 text-base text-crema/70 lg:text-lg">
-      Todos los días, de 13:00 a 00:00. La cocina sirve hasta las 23:00.
+      {contacto.horario}. {contacto.cocina}.
     </p>
     <div data-reveal style="--d:300ms" class="mt-8 flex flex-col items-center gap-4">
-      <a href={links.reservar} class="btn btn-primary"><span>Reservar mesa</span></a>
+      <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary">
+        <span>Solicitar degustación</span>
+      </a>
       <p class="text-sm text-crema/70">
         O llámanos al <a href={links.telefono} class="link whitespace-nowrap">{contacto.telefono}</a>
       </p>

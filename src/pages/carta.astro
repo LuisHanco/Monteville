@@ -1,0 +1,605 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Picture } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+import Icon from '../components/Icon.astro';
+import Spiral from '../components/Spiral.astro';
+import { contacto, links, photos } from '../data/arko';
+
+type Filtro = 'vegano' | 'sin-frutos-secos' | 'cafeteria' | 'alta-cocina';
+
+type Sabor = {
+  nombre: string;
+  notas: string;
+  maridaje: string;
+  alergenos: string[];
+  filtros: Filtro[];
+  imagen: ImageMetadata;
+  etiqueta?: string;
+};
+
+type Categoria = {
+  id: string;
+  numero: string;
+  titulo: string;
+  subtitulo: string;
+  sabores: Sabor[];
+};
+
+const categorias: Categoria[] = [
+  {
+    id: 'origen',
+    numero: '01',
+    titulo: 'Origen Andino & Cacao',
+    subtitulo: 'Ingredientes trazables de Cusco y valles cercanos con formulación de alta pastelería.',
+    sabores: [
+      {
+        nombre: 'Chocolate de Origen 70% Quillabamba',
+        notas: 'Cacao fino de aroma, notas tostadas profundas y textura sedosa.',
+        maridaje: 'Ideal con coulant, brownie tibio o espresso doble.',
+        alergenos: ['Lácteos'],
+        filtros: ['sin-frutos-secos', 'cafeteria', 'alta-cocina'],
+        imagen: photos.entrada,
+        etiqueta: 'Insignia',
+      },
+      {
+        nombre: 'Lúcuma de Altura y Pecanas Caramelizadas',
+        notas: 'Pulpa seleccionada de maduración natural con crocante artesanal.',
+        maridaje: 'Excelente en carta de postres peruanos contemporáneos.',
+        alergenos: ['Lácteos', 'Frutos secos'],
+        filtros: ['alta-cocina'],
+        imagen: photos.lateralEntrada,
+        etiqueta: 'Más pedido',
+      },
+      {
+        nombre: 'Vainilla de Tahití & Flor de Sal de Maras',
+        notas: 'Infusión lenta en vaina natural equilibrada con un toque mineral andino.',
+        maridaje: 'El acompañante definitivo para affogatos y tartas tibias.',
+        alergenos: ['Lácteos'],
+        filtros: ['sin-frutos-secos', 'cafeteria', 'alta-cocina'],
+        imagen: photos.mesaEspecial,
+        etiqueta: 'Ideal affogato',
+      },
+      {
+        nombre: 'Café de Especialidad del Valle',
+        notas: 'Extracción en frío de tueste medio, perfil achocolatado y limpio.',
+        maridaje: 'Diseñado para cafeterías de especialidad y postres con cacao.',
+        alergenos: ['Lácteos'],
+        filtros: ['sin-frutos-secos', 'cafeteria'],
+        imagen: photos.mesas,
+      },
+      {
+        nombre: 'Chirimoya Alegre con Notas Cítricas',
+        notas: 'Cremosidad ligera con matices frescos de ralladura de limón sutil.',
+        maridaje: 'Cierre fresco para almuerzos ejecutivos y terrazas.',
+        alergenos: ['Lácteos'],
+        filtros: ['sin-frutos-secos', 'alta-cocina'],
+        imagen: photos.barra,
+      },
+    ],
+  },
+  {
+    id: 'clasicos',
+    numero: '02',
+    titulo: 'Clásicos de Alta Heladería',
+    subtitulo: 'Recetas europeas ejecutadas con pastas puras de frutos secos y lácteos seleccionados.',
+    sabores: [
+      {
+        nombre: 'Pistacho Tostado de Bronte',
+        notas: 'Pasta 100 % pura de pistacho seleccionado, sin colorantes ni esencias.',
+        maridaje: 'Protagonista en vitrina boutique y emplatados con frutos rojos.',
+        alergenos: ['Lácteos', 'Frutos secos'],
+        filtros: ['cafeteria', 'alta-cocina'],
+        imagen: photos.barraLateral,
+        etiqueta: 'Más pedido',
+      },
+      {
+        nombre: 'Avellana del Piamonte',
+        notas: 'Tueste artesanal suave, cuerpo envolvente y final prolongado.',
+        maridaje: 'Armoniza con café espresso, praliné y hojaldres.',
+        alergenos: ['Lácteos', 'Frutos secos'],
+        filtros: ['cafeteria'],
+        imagen: photos.vinos,
+      },
+      {
+        nombre: 'Mascarpone con Higos Caramelizados',
+        notas: 'Base fresca de mascarpone veteada con reducción especiada de higo.',
+        maridaje: 'Pensado para menús degustación y maridaje con vinos de postre.',
+        alergenos: ['Lácteos'],
+        filtros: ['sin-frutos-secos', 'alta-cocina'],
+        imagen: photos.entrada,
+        etiqueta: 'Alta cocina',
+      },
+      {
+        nombre: 'Fior di Latte',
+        notas: 'Pureza láctea limpia y sedosa, sin aromas añadidos.',
+        maridaje: 'Base neutra versátil para tartas de manzana, crumbles y waffles.',
+        alergenos: ['Lácteos'],
+        filtros: ['sin-frutos-secos', 'cafeteria', 'alta-cocina'],
+        imagen: photos.lateralEntrada,
+        etiqueta: 'Versátil en cocina',
+      },
+      {
+        nombre: 'Caramelo Salado Artesanal',
+        notas: 'Caramelización a seco con mantequilla clarificada y sal de Maras.',
+        maridaje: 'Ideal para copas de autor, waffles y repostería con plátano o manzana.',
+        alergenos: ['Lácteos'],
+        filtros: ['sin-frutos-secos', 'cafeteria'],
+        imagen: photos.mesaEspecial,
+      },
+    ],
+  },
+  {
+    id: 'sorbetes',
+    numero: '03',
+    titulo: 'Sorbetes 100 % Fruta',
+    subtitulo: 'Libres de lácteos y aptos para opciones veganas; ideales como prepostre o cierre ligero.',
+    sabores: [
+      {
+        nombre: 'Maracuyá y Aguaymanto',
+        notas: 'Acidez vibrante y aromática, con textura fina sin cristales.',
+        maridaje: 'Limpia el paladar entre pases en menús degustación.',
+        alergenos: ['Sin lácteos', 'Sin gluten'],
+        filtros: ['vegano', 'sin-frutos-secos', 'alta-cocina'],
+        imagen: photos.mesas,
+        etiqueta: 'Vegano',
+      },
+      {
+        nombre: 'Fresa del Valle Sagrado y Albahaca',
+        notas: 'Fruta fresca de estación con infusión sutil de albahaca orgánica.',
+        maridaje: 'Ideal para postres ligeros y opciones plant-based en hotelería.',
+        alergenos: ['Sin lácteos', 'Sin gluten'],
+        filtros: ['vegano', 'sin-frutos-secos', 'alta-cocina'],
+        imagen: photos.barra,
+        etiqueta: 'Vegano',
+      },
+      {
+        nombre: 'Mango Kent y Limón Sutil',
+        notas: 'Pulpa densa y aterciopelada con un final cítrico refrescante.',
+        maridaje: 'Excelente en cartas de mediodía, terrazas y room service.',
+        alergenos: ['Sin lácteos', 'Sin gluten'],
+        filtros: ['vegano', 'sin-frutos-secos', 'cafeteria'],
+        imagen: photos.barraLateral,
+        etiqueta: 'Vegano',
+      },
+      {
+        nombre: 'Frambuesa y Pétalos de Rosa',
+        notas: 'Perfil delicado y floral, acidez equilibrada y color natural intenso.',
+        maridaje: 'Diseñado para maridar con espumantes, chocolate blanco y repostería fina.',
+        alergenos: ['Sin lácteos', 'Sin gluten'],
+        filtros: ['vegano', 'sin-frutos-secos', 'alta-cocina'],
+        imagen: photos.vinos,
+        etiqueta: 'Vegano',
+      },
+    ],
+  },
+];
+
+const filtrosUI = [
+  { id: 'todos', label: 'Todos los sabores' },
+  { id: 'cafeteria', label: 'Ideal cafetería' },
+  { id: 'alta-cocina', label: 'Alta cocina' },
+  { id: 'vegano', label: 'Vegano / Sin lácteos' },
+  { id: 'sin-frutos-secos', label: 'Sin frutos secos' },
+];
+
+const formatos = [
+  {
+    titulo: 'Cubeta 2.5 L',
+    uso: 'Cafeterías & Vitrina Boutique',
+    detalle: 'Rotación ágil, ideal para affogatos, copas de autor y cartas de postres dinámicas.',
+    rinde: 'Aprox. 30 a 35 bolas (70 g)',
+    precio: 'Desde S/ 120',
+  },
+  {
+    titulo: 'Cubeta 5 L',
+    uso: 'Hoteles, Restaurantes & Banquetes',
+    detalle: 'Máximo rendimiento en cocina y room service con estabilidad térmica controlada.',
+    rinde: 'Aprox. 65 a 70 bolas (70 g)',
+    precio: 'Desde S/ 220',
+  },
+  {
+    titulo: 'Desarrollo de Autor',
+    uso: 'Recetas Exclusivas',
+    detalle: 'Formulamos helados o sorbetes a medida junto a tu chef ejecutivo o jefe de barra.',
+    rinde: 'Lote mínimo coordinado',
+    precio: 'Desde S/ 250',
+  },
+];
+
+const fichaTecnica = [
+  { etiqueta: 'Conservación', valor: '-18 °C', detalle: 'Almacenamiento en congelador horizontal o vertical' },
+  { etiqueta: 'Servicio óptimo', valor: '-12 °C a -14 °C', detalle: 'Textura cremosa lista para quenelle o boleo' },
+  { etiqueta: 'Despacho', valor: 'Cadena de frío', detalle: 'Entregas programadas en Cusco y Valle Sagrado' },
+  { etiqueta: 'Elaboración', valor: 'Lotes frescos', detalle: 'Sin colorantes artificiales ni bases industriales' },
+];
+---
+
+<Layout
+  title="Carta de Sabores · Monteville Helados Gourmet"
+  description="Catálogo exclusivo HoReCa de Monteville en Cusco: sabores de origen andino, clásicos de alta heladería, sorbetes naturales, alérgenos y formatos profesionales."
+  header={false}
+>
+  <!-- Barra superior -->
+  <header class="sticky top-0 z-50 border-b border-crema/10 bg-bg/85 px-4 py-4 backdrop-blur-xl print:hidden md:px-12 xl:px-24">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
+      <a href="/" class="link inline-flex items-center gap-2 text-sm text-crema/80 hover:text-crema">
+        <Icon name="arrowLeft" class="size-4" />
+        <span class="hidden sm:inline">Volver al inicio</span>
+      </a>
+
+      <a href="/" aria-label="Monteville, ir al inicio" class="text-crema">
+        <Logo class="text-base" />
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          data-print-btn
+          class="hidden rounded-full px-3.5 py-2 text-xs text-crema/75 ring-1 ring-crema/15 transition-colors hover:bg-crema/10 hover:text-crema sm:inline-flex"
+        >
+          Imprimir / PDF
+        </button>
+        <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary btn-sm px-4">
+          <span>Degustación</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Portada de la carta -->
+  <section class="relative overflow-hidden px-4 pt-16 pb-12 md:px-12 md:pt-20 xl:px-24">
+    <Spiral
+      rings={12}
+      class="pointer-events-none absolute top-0 right-0 w-[520px] translate-x-1/3 -translate-y-1/4 text-crema/10 print:hidden"
+    />
+    <div class="relative mx-auto max-w-6xl">
+      <p data-reveal class="text-xs font-medium tracking-widest text-teja uppercase">
+        Catálogo Exclusivo HoReCa · Cusco & Valle Sagrado
+      </p>
+      <h1 data-reveal style="--d:100ms" class="mt-4 max-w-3xl text-4xl lg:text-6xl">
+        Carta de Sabores
+      </h1>
+      <p data-reveal style="--d:200ms" class="mt-6 max-w-2xl text-base text-crema/75 lg:text-lg">
+        Alta heladería artesanal formulada para cocina, barra de café y servicio en mesa. Selecciona los sabores que te
+        interesen para armar tu solicitud de degustación privada.
+      </p>
+
+      <!-- Barra de filtros interactivos -->
+      <div data-reveal style="--d:280ms" class="mt-10 flex flex-col gap-4 print:hidden">
+        <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Filtrar sabores">
+          {
+            filtrosUI.map((f, idx) => (
+              <button
+                type="button"
+                data-filter={f.id}
+                aria-pressed={idx === 0 ? 'true' : 'false'}
+                class:list={[
+                  'filter-btn rounded-full px-4 py-2 text-xs transition-colors ring-1',
+                  idx === 0
+                    ? 'bg-teja text-bg ring-teja font-medium'
+                    : 'bg-crema/[0.04] text-crema/80 ring-crema/15 hover:bg-crema/10 hover:text-crema',
+                ]}
+              >
+                {f.label}
+              </button>
+            ))
+          }
+        </div>
+
+        <!-- Accesos rápidos a secciones -->
+        <nav aria-label="Ir a categoría" class="flex flex-wrap gap-x-5 gap-y-2 text-xs text-crema/60">
+          {
+            categorias.map((cat) => (
+              <a href={`#${cat.id}`} class="link inline-flex items-center gap-1.5 hover:text-crema">
+                <span class="font-display text-teja">{cat.numero}</span>
+                <span>{cat.titulo}</span>
+              </a>
+            ))
+          }
+          <a href="#formatos" class="link inline-flex items-center gap-1.5 hover:text-crema">
+            <span class="font-display text-teja">04</span>
+            <span>Formatos y Ficha Técnica</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Listado de categorías y sabores -->
+  <div class="px-4 pb-32 md:px-12 xl:px-24">
+    <div class="mx-auto flex max-w-6xl flex-col gap-20">
+      {
+        categorias.map((cat) => (
+          <section id={cat.id} data-category aria-labelledby={`titulo-${cat.id}`} class="scroll-mt-28">
+            <div class="flex flex-col gap-3 border-b border-crema/15 pb-6 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p data-reveal class="font-display text-sm text-teja">{cat.numero}</p>
+                <h2 id={`titulo-${cat.id}`} data-reveal style="--d:80ms" class="mt-2 text-3xl lg:text-4xl">
+                  {cat.titulo}
+                </h2>
+              </div>
+              <p data-reveal style="--d:140ms" class="max-w-md text-sm text-crema/70">
+                {cat.subtitulo}
+              </p>
+            </div>
+
+            <ol class="divide-y divide-crema/10">
+              {cat.sabores.map((sabor, i) => (
+                <li
+                  data-reveal
+                  data-flavor-item
+                  data-tags={sabor.filtros.join(',')}
+                  style={`--d:${i * 50}ms`}
+                  class="grid grid-cols-[1fr_auto] items-center gap-5 py-6 md:gap-8"
+                >
+                  <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2.5">
+                      <h3 class="text-xl lg:text-2xl">{sabor.nombre}</h3>
+                      {sabor.etiqueta && (
+                        <span class="rounded-full bg-teja/15 px-3 py-0.5 text-xs text-teja ring-1 ring-teja/30">
+                          {sabor.etiqueta}
+                        </span>
+                      )}
+                    </div>
+
+                    <p class="mt-2 max-w-2xl text-sm text-crema/80 lg:text-base">{sabor.notas}</p>
+                    <p class="mt-1.5 text-xs text-crema/55">{sabor.maridaje}</p>
+
+                    <div class="mt-4 flex flex-wrap items-center gap-3">
+                      <div class="flex flex-wrap gap-1.5">
+                        {sabor.alergenos.map((alergeno) => (
+                          <span class="rounded-full bg-crema/[0.05] px-2.5 py-0.5 text-[11px] text-crema/65 ring-1 ring-crema/10">
+                            {alergeno}
+                          </span>
+                        ))}
+                      </div>
+
+                      <button
+                        type="button"
+                        data-select-flavor={sabor.nombre}
+                        aria-pressed="false"
+                        class="flavor-pick inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs text-crema/80 ring-1 ring-crema/20 transition-colors hover:border-teja hover:text-crema print:hidden"
+                      >
+                        <Icon name="plus" class="size-3.5 text-teja" />
+                        <span data-pick-label>Probar en cata</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="mirror-frame mask-oval w-20 shrink-0 md:w-24">
+                    <Picture
+                      src={sabor.imagen}
+                      alt={sabor.nombre}
+                      formats={['avif', 'webp']}
+                      widths={[160, 320]}
+                      sizes="96px"
+                      loading="lazy"
+                      decoding="async"
+                      pictureAttributes={{ class: 'block' }}
+                      class="aspect-[3/4] w-full mask-oval object-cover"
+                    />
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))
+      }
+
+      <!-- Sección de Formatos y Ficha Técnica -->
+      <section id="formatos" aria-labelledby="titulo-formatos" class="scroll-mt-28">
+        <div class="max-w-xl">
+          <p data-reveal class="font-display text-sm text-teja">04</p>
+          <h2 id="titulo-formatos" data-reveal style="--d:80ms" class="mt-2 text-3xl lg:text-4xl">
+            Formatos y Ficha Técnica HoReCa
+          </h2>
+          <p data-reveal style="--d:140ms" class="mt-4 text-sm text-crema/70 lg:text-base">
+            Presentaciones estandarizadas para control de costos, porcionado consistente y operación continua en cocina.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          {
+            formatos.map((formato, i) => (
+              <article
+                data-reveal
+                style={`--d:${i * 90}ms`}
+                class="flex flex-col justify-between rounded-3xl p-6 ring-1 ring-crema/15 lg:p-8"
+              >
+                <div>
+                  <p class="text-xs tracking-widest text-teja uppercase">{formato.uso}</p>
+                  <h3 class="mt-3 text-2xl">{formato.titulo}</h3>
+                  <p class="mt-3 text-sm text-crema/70">{formato.detalle}</p>
+                </div>
+                <div class="mt-6 border-t border-crema/10 pt-4">
+                  <p class="font-display text-2xl text-crema">{formato.precio}</p>
+                  <p class="mt-1 text-xs text-crema/60">{formato.rinde}</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+
+        <!-- Ficha técnica resumida -->
+        <dl class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {
+            fichaTecnica.map((dato) => (
+              <div class="rounded-2xl bg-crema/[0.03] p-5 ring-1 ring-crema/10">
+                <dt class="text-xs tracking-widest text-teja uppercase">{dato.etiqueta}</dt>
+                <dd class="font-display mt-2 text-2xl text-crema">{dato.valor}</dd>
+                <p class="mt-1 text-xs text-crema/60">{dato.detalle}</p>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+
+      <!-- CTA de cierre -->
+      <section
+        data-reveal
+        class="flex flex-col items-start justify-between gap-8 rounded-3xl bg-crema/[0.03] p-8 ring-1 ring-crema/15 md:flex-row md:items-center lg:p-12 print:hidden"
+      >
+        <div class="max-w-xl">
+          <p class="text-xs font-medium tracking-widest text-teja uppercase">Atención comercial B2B</p>
+          <h2 class="mt-3 text-2xl lg:text-4xl">¿Quieres probar nuestra carta en tu cocina?</h2>
+          <p class="mt-3 text-sm text-crema/70 lg:text-base">
+            Agenda una degustación privada sin costo o solicita nuestro tarifario preferencial por volumen para tu
+            establecimiento.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-start gap-3 md:items-end">
+          <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary">
+            <span>Agendar degustación</span>
+            <Icon name="arrowUpRight" class="size-4" />
+          </a>
+          <a href={links.telefono} class="link inline-flex items-center gap-2 text-sm text-crema/70">
+            <Icon name="phone" class="size-4" />
+            <span>{contacto.telefono}</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Barra flotante de selección de cata -->
+  <aside
+    id="tasting-bar"
+    hidden
+    aria-live="polite"
+    class="fixed inset-x-4 bottom-5 z-50 mx-auto max-w-2xl rounded-full bg-bg/95 px-5 py-3 shadow-2xl ring-1 ring-teja/50 backdrop-blur-xl print:hidden"
+  >
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3 text-sm">
+        <span
+          id="tasting-count"
+          class="grid size-7 place-items-center rounded-full bg-teja font-medium text-bg tabular-nums"
+        >
+          0
+        </span>
+        <span class="text-crema">
+          <span id="tasting-text">sabores para degustación</span>
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          id="tasting-clear"
+          class="rounded-full px-3 py-1.5 text-xs text-crema/60 transition-colors hover:text-crema"
+        >
+          Limpiar
+        </button>
+        <a
+          id="tasting-send"
+          href={links.reservar}
+          rel="noopener"
+          target="_blank"
+          class="btn btn-primary btn-sm px-4"
+        >
+          <span>Pedir cata por WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+</Layout>
+
+<style>
+  .flavor-pick[aria-pressed='true'] {
+    background-color: color-mix(in oklab, var(--color-teja) 20%, transparent);
+    color: var(--color-crema);
+    --tw-ring-color: var(--color-teja);
+  }
+</style>
+
+<script>
+  // 1. Imprimir / Guardar como PDF
+  document.querySelector('[data-print-btn]')?.addEventListener('click', () => window.print());
+
+  // 2. Filtros interactivos de sabores
+  const filterBtns = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const flavorItems = [...document.querySelectorAll<HTMLElement>('[data-flavor-item]')];
+  const categories = [...document.querySelectorAll<HTMLElement>('[data-category]')];
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selected = btn.dataset.filter || 'todos';
+
+      filterBtns.forEach((b) => {
+        const active = b === btn;
+        b.setAttribute('aria-pressed', String(active));
+        b.classList.toggle('bg-teja', active);
+        b.classList.toggle('text-bg', active);
+        b.classList.toggle('ring-teja', active);
+        b.classList.toggle('font-medium', active);
+        b.classList.toggle('bg-crema/[0.04]', !active);
+        b.classList.toggle('text-crema/80', !active);
+        b.classList.toggle('ring-crema/15', !active);
+      });
+
+      flavorItems.forEach((item) => {
+        const tags = (item.dataset.tags || '').split(',');
+        const show = selected === 'todos' || tags.includes(selected);
+        item.hidden = !show;
+      });
+
+      categories.forEach((cat) => {
+        const hasVisible = cat.querySelector('[data-flavor-item]:not([hidden])') !== null;
+        cat.hidden = !hasVisible;
+      });
+    });
+  });
+
+  // 3. Selector interactivo de degustación por WhatsApp
+  const selectedFlavors = new Set<string>();
+  const pickBtns = [...document.querySelectorAll<HTMLButtonElement>('[data-select-flavor]')];
+  const bar = document.getElementById('tasting-bar');
+  const countEl = document.getElementById('tasting-count');
+  const textEl = document.getElementById('tasting-text');
+  const sendLink = document.getElementById('tasting-send') as HTMLAnchorElement | null;
+  const clearBtn = document.getElementById('tasting-clear');
+
+  const updateBar = () => {
+    const count = selectedFlavors.size;
+    if (!bar || !countEl || !textEl || !sendLink) return;
+
+    bar.hidden = count === 0;
+    countEl.textContent = String(count);
+    textEl.textContent = count === 1 ? 'sabor para degustación' : 'sabores para degustación';
+
+    const list = [...selectedFlavors].map((s) => `• ${s}`).join('\n');
+    const msg = `Hola Monteville, deseo solicitar una degustación para mi establecimiento con estos sabores:\n${list}`;
+    sendLink.href = `https://wa.me/51926731531?text=${encodeURIComponent(msg)}`;
+  };
+
+  pickBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const name = btn.dataset.selectFlavor;
+      if (!name) return;
+
+      const label = btn.querySelector('[data-pick-label]');
+      if (selectedFlavors.has(name)) {
+        selectedFlavors.delete(name);
+        btn.setAttribute('aria-pressed', 'false');
+        if (label) label.textContent = 'Probar en cata';
+      } else {
+        selectedFlavors.add(name);
+        btn.setAttribute('aria-pressed', 'true');
+        if (label) label.textContent = 'Seleccionado';
+      }
+      updateBar();
+    });
+  });
+
+  clearBtn?.addEventListener('click', () => {
+    selectedFlavors.clear();
+    pickBtns.forEach((btn) => {
+      btn.setAttribute('aria-pressed', 'false');
+      const label = btn.querySelector('[data-pick-label]');
+      if (label) label.textContent = 'Probar en cata';
+    });
+    updateBar();
+  });
+</script>

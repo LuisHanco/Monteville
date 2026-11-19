@@ -1,16 +1,15 @@
 ---
 import { Picture } from 'astro:assets';
-import Pending from './Pending.astro';
 import { experiencias, links, maridaje, photos } from '../data/arko';
 ---
 
 <section id="experiencias" data-spy="#experiencias" aria-labelledby="exp-title" class="px-4 py-24 md:px-12 xl:px-24">
   <div class="mx-auto max-w-6xl">
     <div class="max-w-xl">
-      <p data-reveal class="text-sm text-teja">Experiencias para dos</p>
-      <h2 id="exp-title" data-reveal style="--d:100ms" class="mt-4 text-3xl lg:text-5xl">Dos menús, precio cerrado</h2>
+      <p data-reveal class="text-sm text-teja">Formatos HoReCa</p>
+      <h2 id="exp-title" data-reveal style="--d:100ms" class="mt-4 text-3xl lg:text-5xl">Dos líneas, un mismo estándar</h2>
       <p data-reveal style="--d:200ms" class="mt-6 text-base text-crema/70 lg:text-lg">
-        Elige cuánto quieres recorrer de la carta. También puedes pedir a la carta.
+        Suministro diseñado para cafeterías de especialidad, hoteles boutique y restaurantes de alta cocina.
       </p>
     </div>
 
@@ -34,11 +33,12 @@ import { experiencias, links, maridaje, photos } from '../data/arko';
             <p class="mt-2 text-base text-crema/70">{exp.descripcion}</p>
             <p class="mt-8 flex items-baseline gap-2">
               <span class="font-display text-5xl">{exp.precio}</span>
-              <span class="text-sm text-crema/50">para dos</span>
             </p>
             <p class="mt-1 text-sm text-crema/50">{exp.porPersona}</p>
             <div class="mt-8 flex flex-1 items-end">
-              <a href={links.reservar} class="btn btn-primary"><span>Reservar mesa</span></a>
+              <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary">
+                <span>Solicitar degustación</span>
+              </a>
             </div>
           </article>
         ))
@@ -48,7 +48,7 @@ import { experiencias, links, maridaje, photos } from '../data/arko';
         <div class="mirror-frame mask-oval w-40 lg:w-48">
           <Picture
             src={photos.vinos}
-            alt="Pasillo de vinotecas iluminadas bajo una bóveda blanca"
+            alt="Presentación de helados gourmet Monteville para alta gastronomía"
             formats={['avif', 'webp']}
             widths={[320, 480]}
             sizes="192px"
@@ -65,7 +65,5 @@ import { experiencias, links, maridaje, photos } from '../data/arko';
         <p class="font-display text-4xl">{maridaje.precio}</p>
       </article>
     </div>
-
-    <Pending class="mt-8 max-w-xl">¿Las experiencias se piden al reservar o en la mesa? Según la respuesta, el botón de cada tarjeta puede llevar ya el menú elegido.</Pending>
   </div>
 </section>

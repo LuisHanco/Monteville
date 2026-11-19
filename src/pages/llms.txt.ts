@@ -8,24 +8,24 @@ export const GET: APIRoute = ({ site }) => {
     .map((exp) => `- ${exp.nombre}: ${exp.precio} (${exp.porPersona}). ${exp.descripcion}`)
     .join('\n');
   const questions = faqs.map((faq) => `### ${faq.pregunta}\n\n${faq.respuesta}`).join('\n\n');
-  const body = `# Arko
+  const body = `# Monteville
 
 > ${seo.description}
 
-Cocina japonesa con alma mediterránea. La disciplina japonesa dialoga con el producto mediterráneo y la herencia peruana.
+Alta heladería gourmet artesanal en Cusco, diseñada exclusivamente para cafeterías, hoteles y restaurantes de alto prestigio.
 
 ## Datos
 
-- Dirección: ${contacto.calle}, ${contacto.ciudad} (${contacto.barrio})
+- Ubicación: ${contacto.calle}, ${contacto.ciudad} (${contacto.barrio})
 - Horario: ${contacto.horario}. ${contacto.cocina}.
 - Teléfono: ${contacto.telefono}
 - Email: ${contacto.email}
-- Cocina: nikkei. Técnica japonesa, producto mediterráneo y herencia peruana.
+- Modelo: Venta exclusiva B2B (canal HoReCa).
 ${experienceLines}
 - ${maridaje.nombre}: ${maridaje.precio}. ${maridaje.descripcion}
-- Carta: ${links.carta}
-- Reservas: ${links.reservar}
-- Regalar: ${links.regalar}
+- Carta de sabores: ${links.carta}
+- Solicitar degustación: ${links.reservar}
+- Catálogo HoReCa: ${links.regalar}
 - Instagram: ${links.instagram}
 - Página: ${home}
 

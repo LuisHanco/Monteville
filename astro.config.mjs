@@ -7,24 +7,21 @@ import { fotosPublicas, ogImage } from './src/data/imagenes.ts';
 
 // https://astro.build/config
 export default defineConfig({
-  // URL real de esta landing. Canónica, sitemap, robots.txt, og:image y JSON-LD salen de aquí.
-  // PENDIENTE: cambiarlo cuando la landing tenga su dominio final.
-  site: 'https://arko-sushi.midudev.workers.dev',
+  // URL real de la web. Canónica, sitemap, robots.txt, og:image y JSON-LD salen de aquí.
+  site: 'https://monteville.org.pe',
   integrations: [
     sitemap({
-      // La portada lleva sus imágenes en el sitemap: la de redes y las fotos del local.
+      // La portada lleva sus imágenes en el sitemap: la de redes y las fotos de producto.
       serialize(item) {
         if (new URL(item.url).pathname !== '/') return item;
         const images = [
           { src: ogImage.src, title: ogImage.title, caption: ogImage.alt },
-          ...fotosPublicas.map((foto) => ({ src: foto.src, title: `${foto.lugar} · Arko`, caption: foto.alt })),
+          ...fotosPublicas.map((foto) => ({ src: foto.src, title: `${foto.lugar} · Monteville`, caption: foto.alt })),
         ];
         return { ...item, img: images.map(({ src, ...rest }) => ({ url: new URL(src, item.url).href, ...rest })) };
       },
     }),
   ],
-  // Fuentes servidas desde el propio dominio, recortadas a latin con pyftsubset
-  // (las originales son japonesas y pesan varios MB). Licencias OFL junto a los archivos.
   fonts: [
     {
       provider: fontProviders.local(),
