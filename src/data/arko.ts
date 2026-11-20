@@ -13,7 +13,48 @@ import poster4 from '../assets/paseo/paseo-4.webp';
 import poster5 from '../assets/paseo/paseo-5.webp';
 import poster6 from '../assets/paseo/paseo-6.webp';
 
-export const photos = { entrada, lateralEntrada, mesaEspecial, mesas, barra, barraLateral, vinos };
+// 1. Importa tus nuevas imágenes aquí
+
+import mentaHelado from '../assets/photos/helados/01_Menta.webp';
+import chocolateHelado from '../assets/photos/helados/02_Chocolate.webp';
+import lucumaHelado from '../assets/photos/helados/03_Lucucma.webp';
+import maracuyaHelado from '../assets/photos/helados/04_Maracuya.webp';
+import vainillaHelado from '../assets/photos/helados/05_Vainilla.webp';
+import ronConPasasHelado from '../assets/photos/helados/06_Ron con pasas.webp';
+import carameloHelado from '../assets/photos/helados/07_Caramelo.webp';
+import bananaConChicleHelado from '../assets/photos/helados/08_Banana con chicle.webp';
+import duraznoHelado from '../assets/photos/helados/09_Durazno.webp';
+import naranjaHelado from '../assets/photos/helados/10_Naranja.webp';
+import capuchinoHelado from '../assets/photos/helados/11_Capuchino.webp';
+import payDeLimonHelado from '../assets/photos/helados/12_Pay de limón.webp';
+import cocoHelado from '../assets/photos/helados/13_Coco.webp';
+import frutosDelBosqueHelado from '../assets/photos/helados/14_Frutos de Bosque.webp';
+
+
+
+export const photos = {
+  entrada,
+  lateralEntrada,
+  mesaEspecial,
+  mesas,
+  barra,
+  barraLateral,
+  vinos,
+  menta: mentaHelado,
+  chocolate: chocolateHelado,
+  lucuma: lucumaHelado,
+  maracuya: maracuyaHelado,
+  vainilla: vainillaHelado,
+  ronConPasas: ronConPasasHelado,
+  caramelo: carameloHelado,
+  bananaConChicle: bananaConChicleHelado,
+  durazno: duraznoHelado,
+  naranja: naranjaHelado,
+  capuchino: capuchinoHelado,
+  payDeLimon: payDeLimonHelado,
+  coco: cocoHelado,
+  frutosDelBosque: frutosDelBosqueHelado,
+};
 
 export const seo = {
   title: 'Monteville · Helados gourmet para hoteles, restaurantes y cafeterías en Cusco',
@@ -85,14 +126,14 @@ export const paseo: { paradas: Parada[] } = {
 
 export const links = {
   reservar:
-    'https://wa.me/51926731531?text=Hola%20Monteville%2C%20deseo%20solicitar%20una%20degustaci%C3%B3n%20para%20mi%20establecimiento.',
+    'https://wa.me/51986698900?text=Hola%20Monteville%2C%20deseo%20solicitar%20una%20degustaci%C3%B3n%20para%20mi%20establecimiento.',
   regalar:
-    'https://wa.me/51926731531?text=Hola%20Monteville%2C%20quisiera%20recibir%20el%20cat%C3%A1logo%20y%20tarifario%20HoReCa.',
+    'https://wa.me/51986698900?text=Hola%20Monteville%2C%20quisiera%20recibir%20el%20cat%C3%A1logo%20y%20tarifario%20HoReCa.',
   carta: 'https://monteville.org.pe/carta',
   maps: 'https://maps.google.com/?q=Cusco,Peru',
   instagram: 'https://www.instagram.com/monteville.cusco/',
-  telefono: 'tel:+51926731531',
-  email: 'mailto:contacto@monteville.org.pe',
+  telefono: 'tel:+51986698900',
+  email: 'mailto:monteville.org.pe@gmail.com',
 };
 
 export const contacto = {
@@ -103,8 +144,8 @@ export const contacto = {
   barrio: 'Centro Histórico y Valle Sagrado',
   lat: -13.53195,
   lon: -71.96746,
-  telefono: '+51 926 731 531',
-  email: 'contacto@monteville.org.pe',
+  telefono: '+51 986 698 900',
+  email: 'monteville.org.pe@gmail.com',
   instagram: '@monteville.cusco',
   horario: 'Lunes a sábado, de 08:00 a 19:00',
   cocina: 'Despachos programados con cadena de frío (-18 °C)',
@@ -179,7 +220,7 @@ export const faqs: Faq[] = [
   {
     pregunta: '¿Cómo solicito una degustación para mi negocio?',
     respuesta:
-      'Puedes agendar una cata privada para tu equipo de cocina o gerencia escribiéndonos al +51 926 731 531 o a contacto@monteville.org.pe.',
+      'Puedes agendar una cata privada para tu equipo de cocina o gerencia escribiéndonos al +51 986 698 900 o a monteville.org.pe@gmail.com.',
   },
   {
     pregunta: '¿Cómo garantizan la cadena de frío?',

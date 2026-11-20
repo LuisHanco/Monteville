@@ -3,36 +3,79 @@ import { Picture } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Logo from '../components/Logo.astro';
 import Icon from '../components/Icon.astro';
+import Spiral from '../components/Spiral.astro';
 import { links, photos } from '../data/arko';
 ---
 
 <Layout title="Página no encontrada · Monteville" description="Esta página no existe." noindex header={false}>
-  <section class="flex min-h-svh flex-col items-center justify-center gap-12 px-4 py-24 text-center md:flex-row md:text-left">
-    <div data-reveal class="w-48 md:w-64">
-      <Picture
-        src={photos.vinos}
-        alt="Monteville, alta heladería gourmet en Cusco"
-        formats={['avif', 'webp']}
-        widths={[320, 512]}
-        sizes="256px"
-        loading="eager"
-        pictureAttributes={{ class: 'block' }}
-        class="aspect-[9/16] w-full mask-arch object-cover"
-      />
+  <!-- Fondo decorativo elegante -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <Spiral rings={10} class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] text-crema/5 opacity-50 blur-sm" />
+    <div class="absolute inset-0 bg-gradient-to-b from-bg via-bg/95 to-bg"></div>
+  </div>
+
+  <section class="relative z-10 flex min-h-svh flex-col items-center justify-center gap-12 px-4 py-24 text-center md:flex-row md:text-left md:gap-20 xl:gap-28">
+    
+    <!-- Imagen con estilo premium y Blob animado -->
+    <div data-reveal class="relative group w-56 md:w-80 transition-transform duration-700 hover:-translate-y-2">
+      <!-- Resplandor de fondo -->
+      <div class="absolute inset-0 bg-teja/25 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0"></div>
+      
+      <!-- Contenedor orgánico -->
+      <div class="shape-blob relative z-10 overflow-hidden shadow-2xl shadow-black/40 border border-crema/15 group-hover:border-teja/50 transition-colors duration-500 aspect-square md:aspect-[4/4.5] bg-crema/5">
+        <Picture
+          src={photos.mesaEspecial}
+          alt="Página no encontrada - Monteville"
+          formats={['avif', 'webp']}
+          widths={[320, 640]}
+          sizes="(min-width: 768px) 320px, 224px"
+          loading="eager"
+          pictureAttributes={{ class: 'block h-full w-full' }}
+          class="h-full w-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:-rotate-2 group-hover:brightness-110"
+        />
+      </div>
     </div>
-    <div class="flex max-w-md flex-col items-center gap-6 md:items-start">
-      <a href="/" aria-label="Monteville, volver al inicio" class="text-crema">
-        <Logo class="text-lg" />
+
+    <!-- Contenido y Textos -->
+    <div class="flex max-w-md flex-col items-center gap-6 md:items-start relative z-10">
+      <a href="/" aria-label="Monteville, volver al inicio" class="text-crema hover:text-teja transition-colors duration-300">
+        <Logo class="text-2xl" />
       </a>
-      <p data-reveal class="text-sm text-teja">Error 404</p>
-      <h1 data-reveal style="--d:100ms" class="text-4xl lg:text-5xl">Esta página no existe</h1>
-      <p data-reveal style="--d:200ms" class="text-base text-crema/70">
-        La ruta que buscas ha cambiado o no está disponible. Puedes volver al inicio o explorar nuestra carta de sabores.
-      </p>
-      <div data-reveal style="--d:300ms" class="flex flex-wrap items-center justify-center gap-4">
-        <a href="/" class="btn btn-ghost"><Icon name="arrowLeft" class="size-5" /><span>Volver al inicio</span></a>
-        <a href="/carta" class="btn btn-primary"><span>Ver carta</span></a>
+      
+      <div class="mt-2 flex flex-col items-center md:items-start">
+        <p data-reveal class="text-xs font-medium tracking-widest text-teja uppercase">Error 404</p>
+        <h1 data-reveal style="--d:100ms" class="mt-3 text-5xl lg:text-6xl font-display text-crema leading-tight">
+          Página no<br class="hidden md:block"/> encontrada
+        </h1>
+        <p data-reveal style="--d:200ms" class="mt-5 text-base text-crema/70 leading-relaxed max-w-sm">
+          Parece que el sabor que buscas se ha terminado o la ruta es incorrecta. Te invitamos a volver al inicio o explorar nuestra carta.
+        </p>
+      </div>
+
+      <!-- Botones de acción mejorados -->
+      <div data-reveal style="--d:300ms" class="mt-4 flex flex-wrap items-center justify-center md:justify-start gap-4">
+        <a href="/" class="btn inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm text-crema/80 ring-1 ring-crema/20 transition-all hover:bg-crema/10 hover:text-crema">
+          <Icon name="arrowLeft" class="size-4" />
+          <span>Volver al inicio</span>
+        </a>
+        <a href="/carta" class="btn btn-primary shadow-lg shadow-teja/20 hover:shadow-teja/40 inline-flex items-center gap-2 px-6 py-2.5 text-sm transition-all hover:-translate-y-0.5">
+          <span>Ver carta</span>
+          <Icon name="arrowRight" class="size-4" />
+        </a>
       </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  /* Animación CSS para la forma orgánica (Blob) */
+  .shape-blob {
+    border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* El hover hace que el blob se mueva fluidamente */
+  .group:hover .shape-blob {
+    border-radius: 40% 60% 60% 40% / 40% 60% 40% 60%;
+  }
+</style>

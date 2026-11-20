@@ -7,28 +7,28 @@ import { platos } from '../data/arko';
   <div class="mx-auto max-w-6xl">
     <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <div class="max-w-xl">
-        <p data-reveal class="text-sm text-teja">Sabores destacados</p>
-        <h2 id="carta-title" data-reveal style="--d:100ms" class="mt-4 text-3xl lg:text-5xl">Lo que eleva tu carta</h2>
+        <p data-reveal class="text-sm font-medium tracking-widest text-teja uppercase">Sabores destacados</p>
+        <h2 id="carta-title" data-reveal style="--d:100ms" class="mt-4 text-3xl lg:text-5xl font-display">Lo que eleva tu carta</h2>
       </div>
       <a
         data-reveal
         style="--d:200ms"
         href="/carta"
-        class="link inline-flex items-center gap-2 self-start text-sm md:self-auto"
+        class="link inline-flex items-center gap-2 self-start text-sm md:self-auto hover:text-teja transition-colors"
       >
         Ver la carta completa
-        <Icon name="arrowUpRight" />
+        <Icon name="arrowUpRight" class="size-4" />
       </a>
     </div>
 
-    <ol class="mt-12 divide-y divide-crema/10">
+    <ol class="mt-12 divide-y divide-crema/10 border-y border-crema/10">
       {
         platos.map((plato, i) => (
-          <li data-reveal style={`--d:${i * 80}ms`} class="grid grid-cols-[auto_1fr] items-baseline gap-x-6 gap-y-1 py-6 md:grid-cols-[auto_1fr_auto] md:items-center lg:py-8">
-            <span class="font-display text-sm text-teja tabular-nums">{String(i + 1).padStart(2, '0')}</span>
+          <li data-reveal style={`--d:${i * 80}ms`} class="group grid grid-cols-[auto_1fr] items-baseline gap-x-6 gap-y-1 py-6 px-4 -mx-4 md:grid-cols-[auto_1fr_auto] md:items-center lg:py-8 rounded-2xl transition-colors duration-300 hover:bg-crema/[0.02]">
+            <span class="font-display text-sm text-teja tabular-nums opacity-70 group-hover:opacity-100 transition-opacity">{String(i + 1).padStart(2, '0')}</span>
             <div>
-              <h3 class="text-2xl lg:text-4xl">{plato.nombre}</h3>
-              {plato.detalle && <p class="mt-2 text-base text-crema/70">{plato.detalle}</p>}
+              <h3 class="text-2xl lg:text-3xl font-medium transition-colors group-hover:text-white">{plato.nombre}</h3>
+              {plato.detalle && <p class="mt-2 text-base text-crema/70 leading-relaxed group-hover:text-crema/85 transition-colors">{plato.detalle}</p>}
             </div>
           </li>
         ))

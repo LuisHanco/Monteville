@@ -6,7 +6,7 @@ import { contacto, links, nav } from '../data/arko';
 
 <a
   href="#contenido"
-  class="btn btn-primary btn-sm fixed top-4 left-4 z-[60] -translate-y-24 focus-visible:translate-y-0"
+  class="btn btn-primary btn-sm fixed top-4 left-4 z-[60] -translate-y-24 focus-visible:translate-y-0 shadow-lg"
 >
   <span>Saltar al contenido</span>
 </a>
@@ -15,22 +15,22 @@ import { contacto, links, nav } from '../data/arko';
   class="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-6 lg:justify-start lg:px-8 xl:px-20"
 >
   <div
-    class="pointer-events-auto flex w-max items-center gap-6 rounded-full bg-bg/60 p-2 pl-6 ring-1 ring-crema/10 backdrop-blur-xl lg:gap-5"
+    class="pointer-events-auto flex w-max items-center gap-6 rounded-full bg-bg/75 p-2 pl-6 ring-1 ring-crema/15 backdrop-blur-xl shadow-lg shadow-bg/20 lg:gap-5"
   >
-    <a href="#inicio" class="flex h-9 items-center rounded-full text-crema" aria-label="Monteville, volver al inicio">
+    <a href="#inicio" class="flex h-9 items-center rounded-full text-crema transition-colors hover:text-teja" aria-label="Monteville, volver al inicio">
       <Logo class="text-base" />
     </a>
 
     <nav aria-label="Principal" class="relative hidden lg:block">
-      <span aria-hidden="true" class="nav-indicator absolute top-0 left-0 h-9 rounded-full bg-crema/[0.07]"></span>
-      <ul class="relative flex items-center text-sm">
+      <span aria-hidden="true" class="nav-indicator absolute top-0 left-0 h-9 rounded-full bg-crema/[0.08] shadow-sm"></span>
+      <ul class="relative flex items-center text-sm font-medium">
         {
           nav.map((item) => (
             <li>
               <a
                 href={item.href}
                 data-nav-link
-                class="flex h-9 items-center rounded-full px-3 text-crema/70 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-crema aria-[current=true]:text-crema"
+                class="flex h-9 items-center rounded-full px-4 text-crema/70 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-crema aria-[current=true]:text-crema"
               >
                 <span class="text-trim">{item.label}</span>
               </a>
@@ -41,12 +41,12 @@ import { contacto, links, nav } from '../data/arko';
     </nav>
 
     <div class="flex items-center gap-1">
-      <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary btn-sm px-4">
+      <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary btn-sm px-5 shadow-md hover:shadow-teja/30">
         <span>Degustación</span>
       </a>
       <button
         type="button"
-        class="menu-toggle relative size-9 rounded-full text-crema transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-crema/10 lg:hidden"
+        class="menu-toggle relative size-10 rounded-full text-crema transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-crema/10 lg:hidden"
         aria-expanded="false"
         aria-controls="menu"
         aria-label="Abrir menú"
@@ -60,34 +60,37 @@ import { contacto, links, nav } from '../data/arko';
 
 <div
   id="menu"
-  class="menu invisible fixed inset-0 z-40 flex flex-col justify-between bg-bg/80 px-4 pt-32 pb-12 opacity-0 backdrop-blur-3xl transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden"
+  class="menu invisible fixed inset-0 z-40 flex flex-col justify-between bg-bg/90 px-4 pt-32 pb-12 opacity-0 backdrop-blur-3xl transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden"
   inert
 >
   <nav aria-label="Menú móvil">
-    <ul class="flex flex-col items-center gap-6 text-center">
+    <ul class="flex flex-col items-center gap-8 text-center">
       {
         nav.map((item, i) => (
           <li class="menu-item" style={`--i:${i}`}>
-            <a href={item.href} data-menu-link class="font-display text-4xl text-crema">
+            <a href={item.href} data-menu-link class="font-display text-4xl text-crema hover:text-teja transition-colors">
               {item.label}
             </a>
           </li>
         ))
       }
       <li class="menu-item pt-6" style={`--i:${nav.length}`}>
-        <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary">
+        <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary shadow-lg px-8 py-3">
           <span>Solicitar degustación</span>
         </a>
       </li>
     </ul>
   </nav>
 
-  <div class="menu-item flex flex-col items-center gap-2 text-sm text-crema/70" style={`--i:${nav.length + 1}`}>
-    <a href={links.telefono} class="link inline-flex items-center gap-2">
-      <Icon name="phone" />
+  <div class="menu-item flex flex-col items-center gap-3 text-sm text-crema/70" style={`--i:${nav.length + 1}`}>
+    <!-- Eslogan añadido al menú móvil -->
+    <p class="text-xs font-semibold tracking-widest text-teja uppercase mb-2">Contribuimos con tu Éxito</p>
+    
+    <a href={links.telefono} class="link inline-flex items-center gap-2 hover:text-crema transition-colors">
+      <Icon name="phone" class="size-4" />
       {contacto.telefono}
     </a>
-    <p>{contacto.calle} · {contacto.horario}</p>
+    <p class="opacity-80">{contacto.calle} · {contacto.horario}</p>
   </div>
 </div>
 
@@ -95,7 +98,7 @@ import { contacto, links, nav } from '../data/arko';
   .menu-toggle span {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 12px;
     width: 16px;
     height: 1.5px;
     margin-top: -0.75px;
@@ -105,11 +108,11 @@ import { contacto, links, nav } from '../data/arko';
   }
 
   .menu-toggle span:nth-child(1) {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
   }
 
   .menu-toggle span:nth-child(2) {
-    transform: translateY(3px);
+    transform: translateY(4px);
   }
 
   .menu-toggle[aria-expanded='true'] span:nth-child(1) {

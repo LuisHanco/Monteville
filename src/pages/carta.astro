@@ -29,148 +29,146 @@ type Categoria = {
 
 const categorias: Categoria[] = [
   {
-    id: 'origen',
+    id: 'clasicos',
     numero: '01',
-    titulo: 'Origen Andino & Cacao',
-    subtitulo: 'Ingredientes trazables de Cusco y valles cercanos con formulación de alta pastelería.',
+    titulo: 'Clásicos & Tradición',
+    subtitulo: 'Recetas de toda la vida ejecutadas con maestría, texturas ricas e ingredientes seleccionados.',
     sabores: [
       {
-        nombre: 'Chocolate de Origen 70% Quillabamba',
-        notas: 'Cacao fino de aroma, notas tostadas profundas y textura sedosa.',
-        maridaje: 'Ideal con coulant, brownie tibio o espresso doble.',
-        alergenos: ['Lácteos'],
-        filtros: ['sin-frutos-secos', 'cafeteria', 'alta-cocina'],
-        imagen: photos.entrada,
+        nombre: 'Chocolate Intenso',
+        notas: 'Intenso con trozos de brownie y fudge de chocolate.',
+        maridaje: 'Ideal para acompañar con un espresso doble o frutos rojos.',
+        alergenos: ['Lácteos', 'Gluten'],
+        filtros: ['cafeteria', 'alta-cocina'],
+        imagen: photos.chocolate,
         etiqueta: 'Insignia',
       },
       {
-        nombre: 'Lúcuma de Altura y Pecanas Caramelizadas',
-        notas: 'Pulpa seleccionada de maduración natural con crocante artesanal.',
-        maridaje: 'Excelente en carta de postres peruanos contemporáneos.',
-        alergenos: ['Lácteos', 'Frutos secos'],
-        filtros: ['alta-cocina'],
-        imagen: photos.lateralEntrada,
-        etiqueta: 'Más pedido',
-      },
-      {
-        nombre: 'Vainilla de Tahití & Flor de Sal de Maras',
-        notas: 'Infusión lenta en vaina natural equilibrada con un toque mineral andino.',
-        maridaje: 'El acompañante definitivo para affogatos y tartas tibias.',
-        alergenos: ['Lácteos'],
+        nombre: 'Vainilla',
+        notas: 'Crema suave con vaina de vainilla y barquillo.',
+        maridaje: 'El acompañante definitivo para affogatos y tartas calientes.',
+        alergenos: ['Lácteos', 'Gluten'],
         filtros: ['sin-frutos-secos', 'cafeteria', 'alta-cocina'],
-        imagen: photos.mesaEspecial,
+        imagen: photos.vainilla,
         etiqueta: 'Ideal affogato',
       },
       {
-        nombre: 'Café de Especialidad del Valle',
-        notas: 'Extracción en frío de tueste medio, perfil achocolatado y limpio.',
-        maridaje: 'Diseñado para cafeterías de especialidad y postres con cacao.',
-        alergenos: ['Lácteos'],
-        filtros: ['sin-frutos-secos', 'cafeteria'],
-        imagen: photos.mesas,
+        nombre: 'Caramelo',
+        notas: 'Bañado en salsa dorada y nueces.',
+        maridaje: 'Perfecto en copas heladas y acompañando repostería con manzana.',
+        alergenos: ['Lácteos', 'Frutos secos'],
+        filtros: ['cafeteria'],
+        imagen: photos.caramelo,
       },
       {
-        nombre: 'Chirimoya Alegre con Notas Cítricas',
-        notas: 'Cremosidad ligera con matices frescos de ralladura de limón sutil.',
-        maridaje: 'Cierre fresco para almuerzos ejecutivos y terrazas.',
-        alergenos: ['Lácteos'],
+        nombre: 'Ron con Pasas',
+        notas: 'Con abundantes pasas oscuras maceradas en ron.',
+        maridaje: 'Excelente cierre de sobremesa para cenas de gala.',
+        alergenos: ['Lácteos', 'Alcohol'],
         filtros: ['sin-frutos-secos', 'alta-cocina'],
-        imagen: photos.barra,
+        imagen: photos.ronConPasas,
+        etiqueta: 'Clásico',
+      },
+      {
+        nombre: 'Menta',
+        notas: 'Verde vibrante con chispas de chocolate y menta fresca.',
+        maridaje: 'Refrescante contraste para postres a base de cacao oscuro.',
+        alergenos: ['Lácteos'],
+        filtros: ['cafeteria'],
+        imagen: photos.menta,
       },
     ],
   },
   {
-    id: 'clasicos',
+    id: 'frutas',
     numero: '02',
-    titulo: 'Clásicos de Alta Heladería',
-    subtitulo: 'Recetas europeas ejecutadas con pastas puras de frutos secos y lácteos seleccionados.',
+    titulo: 'Frutas & Sorbetes',
+    subtitulo: 'Selección refrescante con alto porcentaje de pulpa natural, ideales como prepostre.',
     sabores: [
       {
-        nombre: 'Pistacho Tostado de Bronte',
-        notas: 'Pasta 100 % pura de pistacho seleccionado, sin colorantes ni esencias.',
-        maridaje: 'Protagonista en vitrina boutique y emplatados con frutos rojos.',
-        alergenos: ['Lácteos', 'Frutos secos'],
-        filtros: ['cafeteria', 'alta-cocina'],
-        imagen: photos.barraLateral,
+        nombre: 'Maracuyá',
+        notas: 'Amarillo con salsa y semillas de la fruta.',
+        maridaje: 'Limpia el paladar y aporta una acidez vibrante en menús degustación.',
+        alergenos: ['Sin lácteos', 'Sin gluten'],
+        filtros: ['vegano', 'sin-frutos-secos', 'alta-cocina'],
+        imagen: photos.maracuya,
+        etiqueta: 'Vegano',
+      },
+      {
+        nombre: 'Frutos del Bosque',
+        notas: 'Tonos rojos e intensos con moras, frambuesas y arándanos.',
+        maridaje: 'Diseñado para maridar con espumantes y repostería fina.',
+        alergenos: ['Sin lácteos', 'Sin gluten'],
+        filtros: ['vegano', 'sin-frutos-secos', 'alta-cocina'],
+        imagen: photos.frutosDelBosque,
+        etiqueta: 'Vegano',
+      },
+      {
+        nombre: 'Durazno',
+        notas: 'Con tiernos gajos de fruta en almíbar.',
+        maridaje: 'Armoniza con postres de vainilla y copas de verano.',
+        alergenos: ['Lácteos'],
+        filtros: ['sin-frutos-secos', 'cafeteria'],
+        imagen: photos.durazno,
+      },
+      {
+        nombre: 'Naranja',
+        notas: 'Cítrico con rodaja y ralladura.',
+        maridaje: 'Sorbete ligero para refrescar almuerzos ejecutivos y terrazas.',
+        alergenos: ['Sin lácteos', 'Sin gluten'],
+        filtros: ['vegano', 'sin-frutos-secos', 'cafeteria'],
+        imagen: photos.naranja,
+        etiqueta: 'Vegano',
+      },
+      {
+        nombre: 'Coco',
+        notas: 'Blanco con abundante coco rallado y un trozo natural.',
+        maridaje: 'Base versátil para postres tropicales y coctelería.',
+        alergenos: ['Lácteos'],
+        filtros: ['sin-frutos-secos', 'alta-cocina'],
+        imagen: photos.coco,
+      },
+    ],
+  },
+  {
+    id: 'postres',
+    numero: '03',
+    titulo: 'Postres de Autor & Especialidades',
+    subtitulo: 'Sabores complejos inspirados en la repostería y los postres más queridos.',
+    sabores: [
+      {
+        nombre: 'Lúcuma',
+        notas: 'Ocre natural con un copete y salsa de chocolate o dulce de leche.',
+        maridaje: 'Protagonista indiscutible en la carta de postres peruanos contemporáneos.',
+        alergenos: ['Lácteos'],
+        filtros: ['sin-frutos-secos', 'alta-cocina'],
+        imagen: photos.lucuma,
         etiqueta: 'Más pedido',
       },
       {
-        nombre: 'Avellana del Piamonte',
-        notas: 'Tueste artesanal suave, cuerpo envolvente y final prolongado.',
-        maridaje: 'Armoniza con café espresso, praliné y hojaldres.',
-        alergenos: ['Lácteos', 'Frutos secos'],
+        nombre: 'Pay de Limón',
+        notas: 'Amarillo suave con merengue tostado y trozos de galleta.',
+        maridaje: 'Ideal para vitrinas boutique y servicio en copa.',
+        alergenos: ['Lácteos', 'Gluten'],
         filtros: ['cafeteria'],
-        imagen: photos.vinos,
+        imagen: photos.payDeLimon,
       },
       {
-        nombre: 'Mascarpone con Higos Caramelizados',
-        notas: 'Base fresca de mascarpone veteada con reducción especiada de higo.',
-        maridaje: 'Pensado para menús degustación y maridaje con vinos de postre.',
-        alergenos: ['Lácteos'],
-        filtros: ['sin-frutos-secos', 'alta-cocina'],
-        imagen: photos.entrada,
-        etiqueta: 'Alta cocina',
-      },
-      {
-        nombre: 'Fior di Latte',
-        notas: 'Pureza láctea limpia y sedosa, sin aromas añadidos.',
-        maridaje: 'Base neutra versátil para tartas de manzana, crumbles y waffles.',
-        alergenos: ['Lácteos'],
-        filtros: ['sin-frutos-secos', 'cafeteria', 'alta-cocina'],
-        imagen: photos.lateralEntrada,
-        etiqueta: 'Versátil en cocina',
-      },
-      {
-        nombre: 'Caramelo Salado Artesanal',
-        notas: 'Caramelización a seco con mantequilla clarificada y sal de Maras.',
-        maridaje: 'Ideal para copas de autor, waffles y repostería con plátano o manzana.',
+        nombre: 'Capuchino',
+        notas: 'Café con granos de café y cacao.',
+        maridaje: 'El complemento perfecto para pastelería seca y sobremesas.',
         alergenos: ['Lácteos'],
         filtros: ['sin-frutos-secos', 'cafeteria'],
-        imagen: photos.mesaEspecial,
-      },
-    ],
-  },
-  {
-    id: 'sorbetes',
-    numero: '03',
-    titulo: 'Sorbetes 100 % Fruta',
-    subtitulo: 'Libres de lácteos y aptos para opciones veganas; ideales como prepostre o cierre ligero.',
-    sabores: [
-      {
-        nombre: 'Maracuyá y Aguaymanto',
-        notas: 'Acidez vibrante y aromática, con textura fina sin cristales.',
-        maridaje: 'Limpia el paladar entre pases en menús degustación.',
-        alergenos: ['Sin lácteos', 'Sin gluten'],
-        filtros: ['vegano', 'sin-frutos-secos', 'alta-cocina'],
-        imagen: photos.mesas,
-        etiqueta: 'Vegano',
+        imagen: photos.capuchino,
       },
       {
-        nombre: 'Fresa del Valle Sagrado y Albahaca',
-        notas: 'Fruta fresca de estación con infusión sutil de albahaca orgánica.',
-        maridaje: 'Ideal para postres ligeros y opciones plant-based en hotelería.',
-        alergenos: ['Sin lácteos', 'Sin gluten'],
-        filtros: ['vegano', 'sin-frutos-secos', 'alta-cocina'],
-        imagen: photos.barra,
-        etiqueta: 'Vegano',
-      },
-      {
-        nombre: 'Mango Kent y Limón Sutil',
-        notas: 'Pulpa densa y aterciopelada con un final cítrico refrescante.',
-        maridaje: 'Excelente en cartas de mediodía, terrazas y room service.',
-        alergenos: ['Sin lácteos', 'Sin gluten'],
-        filtros: ['vegano', 'sin-frutos-secos', 'cafeteria'],
-        imagen: photos.barraLateral,
-        etiqueta: 'Vegano',
-      },
-      {
-        nombre: 'Frambuesa y Pétalos de Rosa',
-        notas: 'Perfil delicado y floral, acidez equilibrada y color natural intenso.',
-        maridaje: 'Diseñado para maridar con espumantes, chocolate blanco y repostería fina.',
-        alergenos: ['Sin lácteos', 'Sin gluten'],
-        filtros: ['vegano', 'sin-frutos-secos', 'alta-cocina'],
-        imagen: photos.vinos,
-        etiqueta: 'Vegano',
+        nombre: 'Banana con Chicle',
+        notas: 'Divertido remolino amarillo, rosa y azul con chispas de colores.',
+        maridaje: 'Favorito indiscutible en menús infantiles y copas heladas creativas.',
+        alergenos: ['Lácteos'],
+        filtros: ['sin-frutos-secos', 'cafeteria'],
+        imagen: photos.bananaConChicle,
+        etiqueta: 'Infantil',
       },
     ],
   },
@@ -258,7 +256,7 @@ const fichaTecnica = [
       <p data-reveal class="text-xs font-medium tracking-widest text-teja uppercase">
         Catálogo Exclusivo HoReCa · Cusco & Valle Sagrado
       </p>
-      <h1 data-reveal style="--d:100ms" class="mt-4 max-w-3xl text-4xl lg:text-6xl">
+      <h1 data-reveal style="--d:100ms" class="mt-4 max-w-3xl text-4xl lg:text-6xl font-display">
         Carta de Sabores
       </h1>
       <p data-reveal style="--d:200ms" class="mt-6 max-w-2xl text-base text-crema/75 lg:text-lg">
@@ -276,9 +274,9 @@ const fichaTecnica = [
                 data-filter={f.id}
                 aria-pressed={idx === 0 ? 'true' : 'false'}
                 class:list={[
-                  'filter-btn rounded-full px-4 py-2 text-xs transition-colors ring-1',
+                  'filter-btn rounded-full px-4 py-2 text-xs transition-all ring-1',
                   idx === 0
-                    ? 'bg-teja text-bg ring-teja font-medium'
+                    ? 'bg-teja text-bg ring-teja font-medium shadow-md'
                     : 'bg-crema/[0.04] text-crema/80 ring-crema/15 hover:bg-crema/10 hover:text-crema',
                 ]}
               >
@@ -289,16 +287,16 @@ const fichaTecnica = [
         </div>
 
         <!-- Accesos rápidos a secciones -->
-        <nav aria-label="Ir a categoría" class="flex flex-wrap gap-x-5 gap-y-2 text-xs text-crema/60">
+        <nav aria-label="Ir a categoría" class="flex flex-wrap gap-x-5 gap-y-2 text-xs text-crema/60 mt-2">
           {
             categorias.map((cat) => (
-              <a href={`#${cat.id}`} class="link inline-flex items-center gap-1.5 hover:text-crema">
+              <a href={`#${cat.id}`} class="link inline-flex items-center gap-1.5 hover:text-crema transition-colors">
                 <span class="font-display text-teja">{cat.numero}</span>
                 <span>{cat.titulo}</span>
               </a>
             ))
           }
-          <a href="#formatos" class="link inline-flex items-center gap-1.5 hover:text-crema">
+          <a href="#formatos" class="link inline-flex items-center gap-1.5 hover:text-crema transition-colors">
             <span class="font-display text-teja">04</span>
             <span>Formatos y Ficha Técnica</span>
           </a>
@@ -316,7 +314,7 @@ const fichaTecnica = [
             <div class="flex flex-col gap-3 border-b border-crema/15 pb-6 md:flex-row md:items-end md:justify-between">
               <div>
                 <p data-reveal class="font-display text-sm text-teja">{cat.numero}</p>
-                <h2 id={`titulo-${cat.id}`} data-reveal style="--d:80ms" class="mt-2 text-3xl lg:text-4xl">
+                <h2 id={`titulo-${cat.id}`} data-reveal style="--d:80ms" class="mt-2 text-3xl lg:text-4xl font-display">
                   {cat.titulo}
                 </h2>
               </div>
@@ -325,32 +323,32 @@ const fichaTecnica = [
               </p>
             </div>
 
-            <ol class="divide-y divide-crema/10">
+            <ol class="divide-y divide-transparent">
               {cat.sabores.map((sabor, i) => (
                 <li
                   data-reveal
                   data-flavor-item
                   data-tags={sabor.filtros.join(',')}
                   style={`--d:${i * 50}ms`}
-                  class="grid grid-cols-[1fr_auto] items-center gap-5 py-6 md:gap-8"
+                  class="group grid grid-cols-[1fr_auto] items-center gap-6 py-8 md:gap-10 hover:bg-crema/[0.03] transition-colors duration-300 rounded-3xl px-4 -mx-4 border border-transparent hover:border-crema/5"
                 >
                   <div class="min-w-0">
-                    <div class="flex flex-wrap items-center gap-2.5">
-                      <h3 class="text-xl lg:text-2xl">{sabor.nombre}</h3>
+                    <div class="flex flex-wrap items-center gap-3">
+                      <h3 class="text-xl lg:text-2xl font-medium">{sabor.nombre}</h3>
                       {sabor.etiqueta && (
-                        <span class="rounded-full bg-teja/15 px-3 py-0.5 text-xs text-teja ring-1 ring-teja/30">
+                        <span class="rounded-full bg-teja/15 px-3 py-0.5 text-xs text-teja ring-1 ring-teja/30 font-medium">
                           {sabor.etiqueta}
                         </span>
                       )}
                     </div>
 
-                    <p class="mt-2 max-w-2xl text-sm text-crema/80 lg:text-base">{sabor.notas}</p>
-                    <p class="mt-1.5 text-xs text-crema/55">{sabor.maridaje}</p>
+                    <p class="mt-3 max-w-2xl text-sm text-crema/80 lg:text-base leading-relaxed">{sabor.notas}</p>
+                    <p class="mt-2 text-xs text-crema/55 italic">{sabor.maridaje}</p>
 
-                    <div class="mt-4 flex flex-wrap items-center gap-3">
-                      <div class="flex flex-wrap gap-1.5">
+                    <div class="mt-5 flex flex-wrap items-center gap-4">
+                      <div class="flex flex-wrap gap-2">
                         {sabor.alergenos.map((alergeno) => (
-                          <span class="rounded-full bg-crema/[0.05] px-2.5 py-0.5 text-[11px] text-crema/65 ring-1 ring-crema/10">
+                          <span class="rounded-full bg-crema/[0.05] px-3 py-1 text-[11px] text-crema/70 ring-1 ring-crema/10 uppercase tracking-wider">
                             {alergeno}
                           </span>
                         ))}
@@ -360,7 +358,7 @@ const fichaTecnica = [
                         type="button"
                         data-select-flavor={sabor.nombre}
                         aria-pressed="false"
-                        class="flavor-pick inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs text-crema/80 ring-1 ring-crema/20 transition-colors hover:border-teja hover:text-crema print:hidden"
+                        class="flavor-pick inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs text-crema/80 ring-1 ring-crema/20 transition-all hover:border-teja hover:text-crema print:hidden hover:shadow-sm"
                       >
                         <Icon name="plus" class="size-3.5 text-teja" />
                         <span data-pick-label>Probar en cata</span>
@@ -368,19 +366,35 @@ const fichaTecnica = [
                     </div>
                   </div>
 
-                  <div class="mirror-frame mask-oval w-20 shrink-0 md:w-24">
-                    <Picture
-                      src={sabor.imagen}
-                      alt={sabor.nombre}
-                      formats={['avif', 'webp']}
-                      widths={[160, 320]}
-                      sizes="96px"
-                      loading="lazy"
-                      decoding="async"
-                      pictureAttributes={{ class: 'block' }}
-                      class="aspect-[3/4] w-full mask-oval object-cover"
-                    />
-                  </div>
+                  <!-- Botón de imagen (Abre el modal al clickear, sin perder nitidez al hacer hover) -->
+                  <button
+                    type="button" 
+                    title="Ver detalle"
+                    class="relative shrink-0 w-28 md:w-36 transition-all duration-500 group-hover:scale-105 group-hover:-translate-y-1 focus:outline-none"
+                    data-modal-trigger
+                    data-nombre={sabor.nombre}
+                    data-notas={sabor.notas}
+                    data-maridaje={sabor.maridaje}
+                    data-imagen={sabor.imagen.src}
+                  >
+                    <!-- Resplandor vibrante de fondo -->
+                    <div class="absolute inset-0 bg-teja/25 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0"></div>
+                    
+                    <!-- Contenedor BLOB de la foto (Sin filtros que laven la imagen) -->
+                    <div class="shape-blob relative z-10 overflow-hidden shadow-lg aspect-square md:aspect-[4/4.2] border border-crema/10 group-hover:border-teja/50 transition-colors duration-500">
+                      <Picture
+                        src={sabor.imagen}
+                        alt={sabor.nombre}
+                        formats={['avif', 'webp']}
+                        widths={[160, 320, 640]}
+                        sizes="(min-width: 768px) 144px, 112px"
+                        loading="lazy"
+                        decoding="async"
+                        pictureAttributes={{ class: 'block h-full w-full' }}
+                        class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
+                      />
+                    </div>
+                  </button>
                 </li>
               ))}
             </ol>
@@ -392,7 +406,7 @@ const fichaTecnica = [
       <section id="formatos" aria-labelledby="titulo-formatos" class="scroll-mt-28">
         <div class="max-w-xl">
           <p data-reveal class="font-display text-sm text-teja">04</p>
-          <h2 id="titulo-formatos" data-reveal style="--d:80ms" class="mt-2 text-3xl lg:text-4xl">
+          <h2 id="titulo-formatos" data-reveal style="--d:80ms" class="mt-2 text-3xl lg:text-4xl font-display">
             Formatos y Ficha Técnica HoReCa
           </h2>
           <p data-reveal style="--d:140ms" class="mt-4 text-sm text-crema/70 lg:text-base">
@@ -406,11 +420,11 @@ const fichaTecnica = [
               <article
                 data-reveal
                 style={`--d:${i * 90}ms`}
-                class="flex flex-col justify-between rounded-3xl p-6 ring-1 ring-crema/15 lg:p-8"
+                class="flex flex-col justify-between rounded-3xl p-6 ring-1 ring-crema/15 lg:p-8 bg-gradient-to-b from-transparent to-crema/[0.02] hover:ring-crema/30 transition-all"
               >
                 <div>
-                  <p class="text-xs tracking-widest text-teja uppercase">{formato.uso}</p>
-                  <h3 class="mt-3 text-2xl">{formato.titulo}</h3>
+                  <p class="text-xs tracking-widest text-teja uppercase font-semibold">{formato.uso}</p>
+                  <h3 class="mt-3 text-2xl font-medium">{formato.titulo}</h3>
                   <p class="mt-3 text-sm text-crema/70">{formato.detalle}</p>
                 </div>
                 <div class="mt-6 border-t border-crema/10 pt-4">
@@ -426,7 +440,7 @@ const fichaTecnica = [
         <dl class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {
             fichaTecnica.map((dato) => (
-              <div class="rounded-2xl bg-crema/[0.03] p-5 ring-1 ring-crema/10">
+              <div class="rounded-2xl bg-crema/[0.03] p-5 ring-1 ring-crema/10 hover:bg-crema/[0.05] transition-colors">
                 <dt class="text-xs tracking-widest text-teja uppercase">{dato.etiqueta}</dt>
                 <dd class="font-display mt-2 text-2xl text-crema">{dato.valor}</dd>
                 <p class="mt-1 text-xs text-crema/60">{dato.detalle}</p>
@@ -439,23 +453,24 @@ const fichaTecnica = [
       <!-- CTA de cierre -->
       <section
         data-reveal
-        class="flex flex-col items-start justify-between gap-8 rounded-3xl bg-crema/[0.03] p-8 ring-1 ring-crema/15 md:flex-row md:items-center lg:p-12 print:hidden"
+        class="flex flex-col items-start justify-between gap-8 rounded-3xl bg-crema/[0.03] p-8 ring-1 ring-crema/15 md:flex-row md:items-center lg:p-12 print:hidden relative overflow-hidden"
       >
-        <div class="max-w-xl">
+        <div class="absolute inset-0 bg-gradient-to-r from-teja/5 to-transparent pointer-events-none"></div>
+        <div class="max-w-xl relative z-10">
           <p class="text-xs font-medium tracking-widest text-teja uppercase">Atención comercial B2B</p>
-          <h2 class="mt-3 text-2xl lg:text-4xl">¿Quieres probar nuestra carta en tu cocina?</h2>
+          <h2 class="mt-3 text-2xl lg:text-4xl font-display">¿Quieres probar nuestra carta en tu cocina?</h2>
           <p class="mt-3 text-sm text-crema/70 lg:text-base">
             Agenda una degustación privada sin costo o solicita nuestro tarifario preferencial por volumen para tu
             establecimiento.
           </p>
         </div>
 
-        <div class="flex flex-col items-start gap-3 md:items-end">
-          <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary">
+        <div class="flex flex-col items-start gap-3 md:items-end relative z-10">
+          <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary shadow-lg shadow-teja/20 hover:shadow-teja/40 transition-shadow">
             <span>Agendar degustación</span>
             <Icon name="arrowUpRight" class="size-4" />
           </a>
-          <a href={links.telefono} class="link inline-flex items-center gap-2 text-sm text-crema/70">
+          <a href={links.telefono} class="link inline-flex items-center gap-2 text-sm text-crema/70 hover:text-crema transition-colors">
             <Icon name="phone" class="size-4" />
             <span>{contacto.telefono}</span>
           </a>
@@ -497,13 +512,35 @@ const fichaTecnica = [
           href={links.reservar}
           rel="noopener"
           target="_blank"
-          class="btn btn-primary btn-sm px-4"
+          class="btn btn-primary btn-sm px-4 shadow-sm"
         >
           <span>Pedir cata por WhatsApp</span>
         </a>
       </div>
     </div>
   </aside>
+
+  <!-- MODAL DE VISUALIZACIÓN DEL HELADO -->
+  <dialog id="flavor-modal" class="backdrop:bg-bg/90 backdrop:backdrop-blur-md bg-transparent p-4 w-full max-w-lg m-auto rounded-3xl shadow-2xl">
+    <div class="bg-bg border border-crema/15 rounded-3xl p-6 md:p-10 relative overflow-hidden flex flex-col items-center text-center">
+      <!-- Botón de cerrar modal -->
+      <button type="button" id="close-modal" class="absolute top-4 right-4 text-crema/60 hover:text-crema bg-crema/5 hover:bg-crema/10 p-2 rounded-full transition-colors focus:outline-none">
+        <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      
+      <!-- Foto del helado en BLOB gigante -->
+      <div class="shape-blob relative z-10 w-48 h-48 md:w-64 md:h-64 mb-6 shadow-2xl overflow-hidden border-2 border-crema/10">
+         <img id="modal-img" src="" alt="Sabor de Helado" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+      </div>
+      
+      <!-- Información -->
+      <h3 id="modal-title" class="text-3xl font-display text-crema font-medium"></h3>
+      <p id="modal-notes" class="mt-4 text-crema/80 leading-relaxed"></p>
+      <p id="modal-pairing" class="mt-3 text-sm text-teja italic"></p>
+    </div>
+  </dialog>
 </Layout>
 
 <style>
@@ -511,6 +548,34 @@ const fichaTecnica = [
     background-color: color-mix(in oklab, var(--color-teja) 20%, transparent);
     color: var(--color-crema);
     --tw-ring-color: var(--color-teja);
+  }
+
+  /* Animación CSS para la forma orgánica (Blob) */
+  .shape-blob {
+    border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* El hover hace que el blob se mueva fluidamente */
+  .group:hover .shape-blob,
+  #flavor-modal .shape-blob {
+    border-radius: 40% 60% 60% 40% / 40% 60% 40% 60%;
+  }
+
+  /* Animación emergente del modal */
+  dialog[open] {
+    animation: modal-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  dialog::backdrop {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+  @keyframes modal-pop {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 </style>
 
@@ -534,6 +599,7 @@ const fichaTecnica = [
         b.classList.toggle('text-bg', active);
         b.classList.toggle('ring-teja', active);
         b.classList.toggle('font-medium', active);
+        b.classList.toggle('shadow-md', active);
         b.classList.toggle('bg-crema/[0.04]', !active);
         b.classList.toggle('text-crema/80', !active);
         b.classList.toggle('ring-crema/15', !active);
@@ -552,7 +618,40 @@ const fichaTecnica = [
     });
   });
 
-  // 3. Selector interactivo de degustación por WhatsApp
+  // 3. Lógica del Modal Interactivo
+  const modal = document.getElementById('flavor-modal') as HTMLDialogElement;
+  const modalImg = document.getElementById('modal-img') as HTMLImageElement;
+  const modalTitle = document.getElementById('modal-title');
+  const modalNotes = document.getElementById('modal-notes');
+  const modalPairing = document.getElementById('modal-pairing');
+  const closeModal = document.getElementById('close-modal');
+  const modalTriggers = document.querySelectorAll<HTMLButtonElement>('[data-modal-trigger]');
+
+  modalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      if (modalImg && modalTitle && modalNotes && modalPairing) {
+        modalImg.src = trigger.dataset.imagen || '';
+        modalTitle.textContent = trigger.dataset.nombre || '';
+        modalNotes.textContent = trigger.dataset.notas || '';
+        modalPairing.textContent = trigger.dataset.maridaje || '';
+        modal.showModal();
+      }
+    });
+  });
+
+  // Cerrar el modal con el botón 'x'
+  closeModal?.addEventListener('click', () => modal.close());
+
+  // Cerrar el modal haciendo clic fuera de la caja
+  modal?.addEventListener('click', (e) => {
+    const rect = modal.getBoundingClientRect();
+    const isOutside = e.clientY < rect.top || e.clientY > rect.bottom || e.clientX < rect.left || e.clientX > rect.right;
+    if (isOutside) {
+      modal.close();
+    }
+  });
+
+  // 4. Selector interactivo de degustación por WhatsApp
   const selectedFlavors = new Set<string>();
   const pickBtns = [...document.querySelectorAll<HTMLButtonElement>('[data-select-flavor]')];
   const bar = document.getElementById('tasting-bar');
@@ -571,7 +670,7 @@ const fichaTecnica = [
 
     const list = [...selectedFlavors].map((s) => `• ${s}`).join('\n');
     const msg = `Hola Monteville, deseo solicitar una degustación para mi establecimiento con estos sabores:\n${list}`;
-    sendLink.href = `https://wa.me/51926731531?text=${encodeURIComponent(msg)}`;
+    sendLink.href = `https://wa.me/51986698900?text=${encodeURIComponent(msg)}`;
   };
 
   pickBtns.forEach((btn) => {

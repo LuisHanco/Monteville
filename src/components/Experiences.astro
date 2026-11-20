@@ -6,8 +6,8 @@ import { experiencias, links, maridaje, photos } from '../data/arko';
 <section id="experiencias" data-spy="#experiencias" aria-labelledby="exp-title" class="px-4 py-24 md:px-12 xl:px-24">
   <div class="mx-auto max-w-6xl">
     <div class="max-w-xl">
-      <p data-reveal class="text-sm text-teja">Formatos HoReCa</p>
-      <h2 id="exp-title" data-reveal style="--d:100ms" class="mt-4 text-3xl lg:text-5xl">Dos líneas, un mismo estándar</h2>
+      <p data-reveal class="text-sm font-medium tracking-widest text-teja uppercase">Formatos HoReCa</p>
+      <h2 id="exp-title" data-reveal style="--d:100ms" class="mt-4 text-3xl lg:text-5xl font-display">Dos líneas, un mismo estándar</h2>
       <p data-reveal style="--d:200ms" class="mt-6 text-base text-crema/70 lg:text-lg">
         Suministro diseñado para cafeterías de especialidad, hoteles boutique y restaurantes de alta cocina.
       </p>
@@ -20,23 +20,23 @@ import { experiencias, links, maridaje, photos } from '../data/arko';
             data-reveal
             style={`--d:${i * 100}ms`}
             class:list={[
-              'relative flex flex-col rounded-3xl p-6 ring-1 lg:p-8',
-              exp.etiqueta ? 'ring-teja/60' : 'ring-crema/15',
+              'relative flex flex-col rounded-3xl p-6 ring-1 lg:p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-bg/50 bg-gradient-to-b from-transparent to-crema/[0.02]',
+              exp.etiqueta ? 'ring-teja/50 hover:ring-teja/80' : 'ring-crema/15 hover:ring-crema/30',
             ]}
           >
             {exp.etiqueta && (
-              <p class="absolute -top-3 left-6 rounded-full bg-teja px-3 py-1 text-xs font-medium text-bg lg:left-8">
+              <p class="absolute -top-3 left-6 rounded-full bg-teja px-4 py-1 text-xs font-semibold tracking-wide text-bg shadow-md shadow-teja/20 lg:left-8">
                 {exp.etiqueta}
               </p>
             )}
-            <h3 class="text-2xl">{exp.nombre}</h3>
-            <p class="mt-2 text-base text-crema/70">{exp.descripcion}</p>
+            <h3 class="text-2xl font-medium">{exp.nombre}</h3>
+            <p class="mt-3 text-base text-crema/70 leading-relaxed">{exp.descripcion}</p>
             <p class="mt-8 flex items-baseline gap-2">
-              <span class="font-display text-5xl">{exp.precio}</span>
+              <span class="font-display text-5xl text-crema">{exp.precio}</span>
             </p>
-            <p class="mt-1 text-sm text-crema/50">{exp.porPersona}</p>
+            <p class="mt-2 text-sm font-medium text-teja/80">{exp.porPersona}</p>
             <div class="mt-8 flex flex-1 items-end">
-              <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary">
+              <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary w-full sm:w-auto shadow-md hover:shadow-teja/30">
                 <span>Solicitar degustación</span>
               </a>
             </div>
@@ -44,26 +44,44 @@ import { experiencias, links, maridaje, photos } from '../data/arko';
         ))
       }
 
-      <article data-reveal style="--d:200ms" class="flex flex-col items-center gap-6 rounded-3xl p-6 text-center ring-1 ring-crema/15 lg:p-8">
-        <div class="mirror-frame mask-oval w-40 lg:w-48">
-          <Picture
-            src={photos.vinos}
-            alt="Presentación de helados gourmet Monteville para alta gastronomía"
-            formats={['avif', 'webp']}
-            widths={[320, 480]}
-            sizes="192px"
-            loading="lazy"
-            decoding="async"
-            pictureAttributes={{ class: 'block' }}
-            class="aspect-[3/4] w-full mask-oval object-cover"
-          />
+      <article data-reveal style="--d:200ms" class="group relative flex flex-col items-center gap-6 rounded-3xl p-6 text-center ring-1 ring-crema/15 lg:p-8 transition-all duration-500 hover:ring-crema/30 hover:bg-crema/[0.02]">
+        
+        <!-- Imagen con estilo Blob -->
+        <div class="relative w-40 lg:w-48 transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute inset-0 bg-teja/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+          <div class="shape-blob relative z-10 overflow-hidden border border-crema/10 aspect-square shadow-xl shadow-black/30 group-hover:border-teja/40 transition-colors duration-500 bg-crema/5">
+            <Picture
+              src={photos.vinos}
+              alt="Presentación de helados gourmet Monteville para alta gastronomía"
+              formats={['avif', 'webp']}
+              widths={[320, 480]}
+              sizes="192px"
+              loading="lazy"
+              decoding="async"
+              pictureAttributes={{ class: 'block h-full w-full' }}
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-2"
+            />
+          </div>
         </div>
-        <div>
-          <h3 class="text-2xl">{maridaje.nombre}</h3>
-          <p class="mt-2 text-base text-crema/70">{maridaje.descripcion}</p>
+
+        <div class="relative z-10 mt-2">
+          <h3 class="text-2xl font-medium">{maridaje.nombre}</h3>
+          <p class="mt-3 text-base text-crema/70 leading-relaxed">{maridaje.descripcion}</p>
         </div>
-        <p class="font-display text-4xl">{maridaje.precio}</p>
+        <p class="font-display text-4xl text-crema mt-auto relative z-10">{maridaje.precio}</p>
       </article>
     </div>
   </div>
 </section>
+
+<style>
+  /* Animación CSS para la forma orgánica (Blob) */
+  .shape-blob {
+    border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .group:hover .shape-blob {
+    border-radius: 40% 60% 60% 40% / 40% 60% 40% 60%;
+  }
+</style>
