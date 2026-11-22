@@ -4,9 +4,9 @@ import Stop from './Stop.astro';
 import { links, paseo } from '../data/arko';
 
 const { paradas } = paseo;
-const body = 'mt-4 max-w-md text-base text-crema/80 lg:text-lg';
-const title = 'mt-4 max-w-xl text-4xl lg:text-5xl xl:text-6xl';
-const pill = 'rounded-full bg-bg/40 px-3 py-1 ring-1 ring-crema/20 backdrop-blur-md';
+const body = 'mt-4 max-w-md text-base text-crema/80 lg:text-lg leading-relaxed';
+const title = 'mt-4 max-w-xl text-4xl lg:text-5xl xl:text-6xl font-display';
+const pill = 'rounded-full bg-bg/60 px-4 py-1.5 ring-1 ring-crema/20 backdrop-blur-md shadow-lg shadow-black/20 font-medium tracking-wide';
 ---
 
 <section id="recorrido" data-world aria-label="Recorrido por Monteville" class="relative">
@@ -52,29 +52,29 @@ const pill = 'rounded-full bg-bg/40 px-3 py-1 ring-1 ring-crema/20 backdrop-blur
     </div>
 
     <!-- Velos para leer el texto encima del vídeo. -->
-    <div aria-hidden="true" class="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-bg/60 to-transparent"></div>
+    <div aria-hidden="true" class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-bg/60 to-transparent"></div>
     <div
       aria-hidden="true"
-      class="absolute inset-0 bg-linear-to-t from-bg from-15% via-bg/50 via-50% to-transparent to-80% lg:bg-linear-to-r lg:from-bg/90 lg:via-bg/40 lg:via-35% lg:to-transparent lg:to-65%"
+      class="absolute inset-0 bg-gradient-to-t from-bg from-15% via-bg/50 via-50% to-transparent to-80% lg:bg-gradient-to-r lg:from-bg/90 lg:via-bg/40 lg:via-35% lg:to-transparent lg:to-65%"
     >
     </div>
-    <div aria-hidden="true" class="absolute inset-x-0 bottom-0 hidden h-1/2 bg-linear-to-t from-bg/80 to-transparent lg:block"></div>
+    <div aria-hidden="true" class="absolute inset-x-0 bottom-0 hidden h-1/2 bg-gradient-to-t from-bg/80 to-transparent lg:block"></div>
 
     <!-- Raíl de paradas. -->
     <nav aria-label="Paradas del recorrido" class="absolute top-1/2 right-6 hidden -translate-y-1/2 lg:block xl:right-8">
       <ol class="relative flex flex-col items-end gap-4">
         <span aria-hidden="true" class="absolute top-3 right-1 bottom-3 w-px translate-x-1/2 bg-crema/20">
-          <span data-rail-fill class="absolute inset-0 origin-top scale-y-0 bg-teja"></span>
+          <span data-rail-fill class="absolute inset-0 origin-top scale-y-0 bg-teja transition-transform duration-300"></span>
         </span>
         {
           paradas.map((parada, i) => (
             <li>
               <a href={`#${parada.id}`} data-goto aria-current={i === 0 ? 'true' : 'false'} class="rail-link group flex h-6 items-center gap-3">
-                <span class="rail-label rounded-full bg-bg/60 px-3 py-1 text-xs whitespace-nowrap text-crema ring-1 ring-crema/10 backdrop-blur-xl">
+                <span class="rail-label rounded-full bg-bg/80 px-3 py-1 text-xs font-medium whitespace-nowrap text-crema ring-1 ring-crema/20 backdrop-blur-xl shadow-lg">
                   {parada.lugar}
                 </span>
                 <span class="relative grid size-2 place-items-center">
-                  <span class="rail-dot size-2 rounded-full bg-crema/50" />
+                  <span class="rail-dot size-2 rounded-full bg-crema/50 shadow-sm" />
                 </span>
               </a>
             </li>
@@ -86,34 +86,36 @@ const pill = 'rounded-full bg-bg/40 px-3 py-1 ring-1 ring-crema/20 backdrop-blur
     <p
       data-hint
       aria-hidden="true"
-      class="absolute right-8 bottom-8 hidden items-center gap-3 text-xs tracking-widest text-crema/70 uppercase lg:flex"
+      class="absolute right-8 bottom-8 hidden items-center gap-3 text-xs font-semibold tracking-widest text-crema/80 uppercase lg:flex drop-shadow-md"
     >
       Desliza para descubrir Monteville
-      <span class="hint-line relative block h-8 w-px overflow-hidden bg-crema/20"></span>
+      <span class="hint-line relative block h-8 w-px overflow-hidden bg-crema/30"></span>
     </p>
   </div>
 
-  <!-- Paradas -->
+  <!-- Paradas de Información -->
   <div class="relative z-10 -mt-[100lvh]">
+    
+    <!-- Inicio / Portada -->
     <Stop index={0} spy="#inicio">
-      <h1 class="mt-4">
-        <span class="block font-sans text-xs font-medium tracking-widest text-teja uppercase">
+      <h1 class="mt-4 drop-shadow-lg">
+        <span class="block font-sans text-xs font-bold tracking-widest text-teja uppercase">
           Monteville · Alta heladería gourmet en Cusco
         </span>
         <span
-          class="hero-title mt-4 block max-w-[680px] bg-linear-to-r from-crema to-[#b3a894] bg-clip-text pb-2 text-4xl text-transparent lg:text-6xl"
+          class="hero-title mt-4 block max-w-[680px] bg-gradient-to-r from-crema to-[#d1c8b8] bg-clip-text pb-2 text-4xl text-transparent font-display lg:text-6xl"
         >
           Helados gourmet<br /> para la hospitalidad
         </span>
       </h1>
       <p class={body}>
         Formulación artesanal exclusiva para cafeterías de especialidad, hoteles boutique y restaurantes de alto
-        prestigio en Cusco.
+        prestigio en Cusco y el Valle Sagrado.
       </p>
-      <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary mt-6">
+      <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary mt-8 shadow-lg shadow-teja/20 hover:shadow-teja/40 hover:-translate-y-0.5 transition-all">
         <span>Solicitar degustación</span>
       </a>
-      <ul class="mt-6 flex flex-wrap gap-2 text-xs text-crema/80" aria-label="Nuestro estándar">
+      <ul class="mt-8 flex flex-wrap gap-3 text-xs text-crema" aria-label="Nuestro estándar">
         <li class={pill}>Exclusivo HoReCa</li>
         <li class={pill}>Ingredientes de origen</li>
         <li class={pill}>Cadena de frío</li>
@@ -126,7 +128,7 @@ const pill = 'rounded-full bg-bg/40 px-3 py-1 ring-1 ring-crema/20 backdrop-blur
         Combinamos técnica de heladería artesanal con cacao fino, frutas de estación e ingredientes de origen. Textura
         sedosa, dulzor equilibrado y estabilidad real en cocina.
       </p>
-      <p class="mt-4 max-w-md text-sm text-crema/60">
+      <p class="mt-4 max-w-md text-sm text-crema/60 italic">
         Operamos 100 % en el canal B2B para garantizar consistencia y exclusividad a nuestros socios comerciales.
       </p>
     </Stop>
@@ -136,21 +138,21 @@ const pill = 'rounded-full bg-bg/40 px-3 py-1 ring-1 ring-crema/20 backdrop-blur
       <p class={body}>
         Presentaciones diseñadas para vitrina, barra de café o emplatado de alta cocina, con reposición programada.
       </p>
-      <dl class="mt-6 grid w-full max-w-md grid-cols-3 gap-4">
-        <div class="flex flex-col-reverse gap-1">
-          <dt class="text-xs text-crema/60">Línea Cafetería</dt>
-          <dd class="font-display text-2xl lg:text-4xl">2.5 L</dd>
+      <dl class="mt-8 grid w-full max-w-md grid-cols-3 gap-6">
+        <div class="flex flex-col-reverse gap-1 p-4 rounded-2xl bg-bg/40 ring-1 ring-crema/10 backdrop-blur-sm">
+          <dt class="text-xs text-crema/70 uppercase tracking-wide">Línea Cafetería</dt>
+          <dd class="font-display text-2xl lg:text-4xl text-teja">2.5 L</dd>
         </div>
-        <div class="flex flex-col-reverse gap-1">
-          <dt class="text-xs text-crema/60">Línea Hotel</dt>
-          <dd class="font-display text-2xl lg:text-4xl">5 L</dd>
+        <div class="flex flex-col-reverse gap-1 p-4 rounded-2xl bg-bg/40 ring-1 ring-crema/10 backdrop-blur-sm">
+          <dt class="text-xs text-crema/70 uppercase tracking-wide">Línea Hotel</dt>
+          <dd class="font-display text-2xl lg:text-4xl text-teja">5 L</dd>
         </div>
-        <div class="flex flex-col-reverse gap-1">
-          <dt class="text-xs text-crema/60">De Autor</dt>
-          <dd class="font-display text-2xl lg:text-4xl">A medida</dd>
+        <div class="flex flex-col-reverse gap-1 p-4 rounded-2xl bg-bg/40 ring-1 ring-crema/10 backdrop-blur-sm">
+          <dt class="text-xs text-crema/70 uppercase tracking-wide">De Autor</dt>
+          <dd class="font-display text-2xl lg:text-4xl text-teja">A medida</dd>
         </div>
       </dl>
-      <a href="#experiencias" class="link mt-6 text-sm">Ver formatos y líneas HoReCa</a>
+      <a href="#experiencias" class="link mt-6 text-sm inline-flex items-center gap-2 hover:text-teja transition-colors">Ver formatos y líneas HoReCa</a>
     </Stop>
 
     <Stop index={3} eyebrow="Calidad y control">
@@ -159,14 +161,14 @@ const pill = 'rounded-full bg-bg/40 px-3 py-1 ring-1 ring-crema/20 backdrop-blur
         Pasteurización precisa, maduración controlada y abatimiento rápido para que cada porción mantenga su estructura
         desde el congelador hasta la mesa.
       </p>
-      <ul class="mt-6 grid w-full max-w-md grid-cols-2 gap-4">
-        <li class="flex flex-col gap-1 rounded-2xl bg-bg/40 p-4 ring-1 ring-crema/15 backdrop-blur-md">
-          <span class="font-display text-2xl lg:text-3xl">100 %</span>
-          <span class="text-xs text-crema/70 lg:text-sm">Ingredientes naturales y trazables</span>
+      <ul class="mt-8 grid w-full max-w-md grid-cols-2 gap-4">
+        <li class="flex flex-col gap-2 rounded-2xl bg-bg/60 p-5 ring-1 ring-crema/20 backdrop-blur-md shadow-lg shadow-black/20 hover:bg-bg/80 transition-colors">
+          <span class="font-display text-2xl lg:text-4xl text-crema">100%</span>
+          <span class="text-xs text-crema/80 lg:text-sm leading-relaxed">Ingredientes naturales y trazables</span>
         </li>
-        <li class="flex flex-col gap-1 rounded-2xl bg-bg/40 p-4 ring-1 ring-crema/15 backdrop-blur-md">
-          <span class="font-display text-2xl lg:text-3xl">-18 °C</span>
-          <span class="text-xs text-crema/70 lg:text-sm">Cadena de frío garantizada en despacho</span>
+        <li class="flex flex-col gap-2 rounded-2xl bg-bg/60 p-5 ring-1 ring-crema/20 backdrop-blur-md shadow-lg shadow-black/20 hover:bg-bg/80 transition-colors">
+          <span class="font-display text-2xl lg:text-4xl text-crema">-18 °C</span>
+          <span class="text-xs text-crema/80 lg:text-sm leading-relaxed">Cadena de frío garantizada en despacho</span>
         </li>
       </ul>
     </Stop>
@@ -177,38 +179,38 @@ const pill = 'rounded-full bg-bg/40 px-3 py-1 ring-1 ring-crema/20 backdrop-blur
         Cacao fino de Quillabamba, flor de sal de Maras, pistacho tostado y frutas de altura. Sin saborizantes
         artificiales ni bases industriales.
       </p>
-      <div class="mt-6 flex items-end gap-4">
-        <span class="font-display text-5xl text-teja lg:text-7xl">70 %</span>
-        <span class="max-w-48 pb-1 text-sm text-crema/70">Cacao fino de origen en nuestra receta insignia de chocolate</span>
+      <div class="mt-8 flex items-center gap-6 p-6 rounded-3xl bg-crema/[0.03] ring-1 ring-crema/10 max-w-md backdrop-blur-sm">
+        <span class="font-display text-5xl text-teja drop-shadow-md lg:text-7xl">70%</span>
+        <span class="text-sm text-crema/80 leading-relaxed font-medium">Cacao fino de origen en nuestra receta insignia de chocolate</span>
       </div>
     </Stop>
 
     <Stop index={5} eyebrow="Cómo trabajamos">
       <h2 class={title}>Tu carta, en tres pasos</h2>
-      <ol class="mt-6 flex max-w-md flex-col gap-4">
-        <li class="flex gap-4">
-          <span class="font-display text-2xl text-teja">1</span>
+      <ol class="mt-8 flex max-w-md flex-col gap-6">
+        <li class="flex gap-5 items-start">
+          <span class="flex items-center justify-center size-8 rounded-full bg-teja/20 text-teja font-display text-xl ring-1 ring-teja/50 shrink-0">1</span>
           <div>
-            <h3 class="text-lg">Solicita una degustación</h3>
-            <p class="text-sm text-crema/70">Coordinamos una cata privada para tu chef, barista o gerencia.</p>
+            <h3 class="text-lg font-medium text-crema">Solicita una degustación</h3>
+            <p class="mt-1 text-sm text-crema/70 leading-relaxed">Coordinamos una cata privada para tu chef, barista o gerencia.</p>
           </div>
         </li>
-        <li class="flex gap-4">
-          <span class="font-display text-2xl text-teja">2</span>
+        <li class="flex gap-5 items-start">
+          <span class="flex items-center justify-center size-8 rounded-full bg-teja/20 text-teja font-display text-xl ring-1 ring-teja/50 shrink-0">2</span>
           <div>
-            <h3 class="text-lg">Define tu selección</h3>
-            <p class="text-sm text-crema/70">Elige sabores de línea o desarrolla recetas exclusivas para tu establecimiento.</p>
+            <h3 class="text-lg font-medium text-crema">Define tu selección</h3>
+            <p class="mt-1 text-sm text-crema/70 leading-relaxed">Elige sabores de línea o desarrolla recetas exclusivas para tu establecimiento.</p>
           </div>
         </li>
-        <li class="flex gap-4">
-          <span class="font-display text-2xl text-teja">3</span>
+        <li class="flex gap-5 items-start">
+          <span class="flex items-center justify-center size-8 rounded-full bg-teja/20 text-teja font-display text-xl ring-1 ring-teja/50 shrink-0">3</span>
           <div>
-            <h3 class="text-lg">Recibe con cadena de frío</h3>
-            <p class="text-sm text-crema/70">Despachos programados en Cusco y Valle Sagrado, de lunes a sábado.</p>
+            <h3 class="text-lg font-medium text-crema">Recibe con cadena de frío</h3>
+            <p class="mt-1 text-sm text-crema/70 leading-relaxed">Despachos programados en Cusco y Valle Sagrado, de lunes a sábado.</p>
           </div>
         </li>
       </ol>
-      <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary mt-6">
+      <a href={links.reservar} rel="noopener" target="_blank" class="btn btn-primary mt-10 shadow-lg shadow-teja/20">
         <span>Solicitar degustación</span>
       </a>
     </Stop>
@@ -266,6 +268,7 @@ const pill = 'rounded-full bg-bg/40 px-3 py-1 ring-1 ring-crema/20 backdrop-blur
   .rail-link[aria-current='true'] .rail-dot {
     background-color: var(--color-teja);
     transform: scale(1.5);
+    box-shadow: 0 0 10px rgba(220, 107, 72, 0.5);
   }
 
   .hint-line::after {
